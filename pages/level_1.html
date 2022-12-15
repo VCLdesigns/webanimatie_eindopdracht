@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Level 1</title>
 </head>
 
@@ -19,13 +19,24 @@
     <main>
         <div id="container">
             <div id="inventaris_container">
+                <div id="inventaris_plaats_1" class="inventaris_plaats"></div>
+                <div id="inventaris_plaats_2" class="inventaris_plaats"></div>
+                <div id="inventaris_plaats_3" class="inventaris_plaats"></div>
+                <div id="inventaris_plaats_4" class="inventaris_plaats"></div>
+                <div id="inventaris_plaats_5" class="inventaris_plaats"></div>
 
             </div>
-        
+
             <div id="speelveld_container">
-
+                <div id="bos_container">
+                    <div id="ingredient_1" class="ingredient witte_paddestoel  "></div>
+                    <div id="ingredient_2" class="ingredient varen"></div>
+                    <div id="ingredient_3" class="ingredient oranje_bekerplant "></div>
+                    <div id="ingredient_4" class="ingredient anemoon_plant"></div>
+                    <div id="ingredient_5" class="ingredient grijze_bekerplant "></div>
+                </div>
             </div>
-            
+
             <div id="tekst_container">
 
             </div>
@@ -37,6 +48,38 @@
     </footer>
 
     <script>
+        var inventarisPlaatsen = document.querySelectorAll(".inventaris_plaats");
+        var inventarisPlaats1 = document.querySelector("#inventaris_plaats_1");
+        var inventarisPlaats2 = document.querySelector("#inventaris_plaats_2");
+        var inventarisPlaats3 = document.querySelector("#inventaris_plaats_3");
+        var inventarisPlaats4 = document.querySelector("#inventaris_plaats_4");
+        var inventarisPlaats5 = document.querySelector("#inventaris_plaats_5");
+        var deWittePaddestoel = document.querySelector("#ingredient_1");
+        var deVaren = document.querySelector("#ingredient_2");
+        var deOranjeBeker = document.querySelector("#ingredient_3");
+        var deAnemoon = document.querySelector("#ingredient_4");
+        var deGrijzeBeker = document.querySelector("#ingredient_5");
+        var ingredienten = document.querySelectorAll(".ingredient");
+
+        for (var i = 0; i < ingredienten.length; i++) {
+            ingredienten[i].addEventListener("click", ingredientGevonden);
+        }
+        function ingredientGevonden(evt) {
+            var gepluktePlant = evt.currentTarget.getAttribute("id");
+            if (gepluktePlant == "ingredient_1") {
+                inventarisPlaats1.classList.add("witte_paddestoel");
+            } else if (gepluktePlant == "ingredient_2") {
+                inventarisPlaats2.classList.add("varen")
+            } else if (gepluktePlant == "ingredient_3") {
+                inventarisPlaats3.classList.add("oranje_bekerplant")
+            } else if (gepluktePlant == "ingredient_4") {
+                inventarisPlaats4.classList.add("anemoon_plant")
+            } else if (gepluktePlant == "ingredient_5") {
+                inventarisPlaats5.classList.add("grijze_bekerplant")
+            }
+        }
+
+
 
     </script>
 

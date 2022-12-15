@@ -1,0 +1,122 @@
+/* © Victor Loots, 2022
+/*
+
+  /* Variabelen */
+:root {
+  --font_titel: "domineregular", Georgia, serif;
+  --font_subtitel: "montserratregular", Verdana, sans-serif;
+  --font-brood: "open_sansregular", Verdana, sans-serif;
+  --kleur_wit: #f8f7f3;
+  --kleur_zwart: #303030;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+img {
+  display: block;
+}
+
+
+/*
+  /* Standards */
+html {
+  font-size: 62.5%;
+  /* (62.5/100) * 16px = 10px */
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  color: var(--kleur_zwart);
+  background-color: var(--kleur_wit);
+  font-family: var(--font-brood);
+  font-size: 2rem;
+  line-height: 1.5;
+}
+
+.inventaris_plaats{
+  width: 25px;
+  height: 25px;
+}
+
+#speelveld_container {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  margin: 2rem auto;
+}
+
+#bos_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/forest_background.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.ingredient {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+.ingredient:hover {
+  cursor: pointer;
+  ;
+}
+
+#ingredient_1 {
+  top: 269px;
+  left: 170px;
+}
+
+#ingredient_2 {
+  top: 279px;
+  right: 154px;
+}
+
+#ingredient_3 {
+  top: 258px;
+  left: 667px;
+}
+
+#ingredient_4 {
+  top: 313px;
+  left: 436px;
+}
+#ingredient_5 {
+  bottom: 34px;
+  left: 424px;
+}
+
+
+.witte_paddestoel {
+  background-color: white;
+}
+
+.varen {
+  background-color: green;
+}
+
+.oranje_bekerplant {
+  background-color: orange;
+}
+
+.anemoon_plant {
+  background-color: pink;
+}
+
+.grijze_bekerplant {
+  background-color: grey;
+}
