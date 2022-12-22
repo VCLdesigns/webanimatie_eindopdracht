@@ -17,13 +17,15 @@
     </header>
 
     <main>
+        <!-- 1200px op 800px max!-->
         <div id="container">
             <div id="inventaris_container">
-                <div id="inventaris_plaats_1" class="inventaris_plaats"></div>
-                <div id="inventaris_plaats_2" class="inventaris_plaats"></div>
-                <div id="inventaris_plaats_3" class="inventaris_plaats"></div>
-                <div id="inventaris_plaats_4" class="inventaris_plaats"></div>
-                <div id="inventaris_plaats_5" class="inventaris_plaats"></div>
+                Inventaris
+                <div class="inventaris_plaats"></div>
+                <div class="inventaris_plaats"></div>
+                <div class="inventaris_plaats"></div>
+                <div class="inventaris_plaats"></div>
+                <div class="inventaris_plaats"></div>
 
             </div>
 
@@ -38,6 +40,17 @@
             </div>
 
             <div id="tekst_container">
+                <div id="dialoog">
+                    <div id="dialoog_content">
+                        <div id="dialoog_top"></div>
+                        <div id="dialoog_bottom"></div>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div id="help" class="icon">?</div>
+                    <div id="reset" class="icon">reset</div>
+                    <div id="volgende_level" class="icon verborgen">-></div>
+                </div>
 
             </div>
         </div>
@@ -49,17 +62,32 @@
 
     <script>
         var inventarisPlaatsen = document.querySelectorAll(".inventaris_plaats");
-        var inventarisPlaats1 = document.querySelector("#inventaris_plaats_1");
-        var inventarisPlaats2 = document.querySelector("#inventaris_plaats_2");
-        var inventarisPlaats3 = document.querySelector("#inventaris_plaats_3");
-        var inventarisPlaats4 = document.querySelector("#inventaris_plaats_4");
-        var inventarisPlaats5 = document.querySelector("#inventaris_plaats_5");
+        var gevondenPlanten = 0;
         var deWittePaddestoel = document.querySelector("#ingredient_1");
         var deVaren = document.querySelector("#ingredient_2");
         var deOranjeBeker = document.querySelector("#ingredient_3");
         var deAnemoon = document.querySelector("#ingredient_4");
         var deGrijzeBeker = document.querySelector("#ingredient_5");
         var ingredienten = document.querySelectorAll(".ingredient");
+        var dialoog = document.querySelector("#dialoog_content");
+        var volgendeLevel = document.querySelector("#volgende_level");
+
+
+
+        var i = 0;
+        var speed = 10;
+        var tekst = "\nHeerlijk die frisse boslucht. \nNu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
+        console.log(tekst);
+        function typeWriter() {
+
+            if (i < tekst.length) {
+                dialoog.innerHTML += tekst.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
+
 
         for (var i = 0; i < ingredienten.length; i++) {
             ingredienten[i].addEventListener("click", ingredientGevonden);
@@ -67,15 +95,41 @@
         function ingredientGevonden(evt) {
             var gepluktePlant = evt.currentTarget.getAttribute("id");
             if (gepluktePlant == "ingredient_1") {
-                inventarisPlaats1.classList.add("witte_paddestoel");
+                deWittePaddestoel.classList.remove("witte_paddestoel");
+                inventarisPlaatsen[0].classList.add("witte_paddestoel");
+                gevondenPlanten++;
             } else if (gepluktePlant == "ingredient_2") {
-                inventarisPlaats2.classList.add("varen")
+                deVaren.classList.remove("varen");
+                inventarisPlaatsen[1].classList.add("varen");
+                gevondenPlanten++;
             } else if (gepluktePlant == "ingredient_3") {
-                inventarisPlaats3.classList.add("oranje_bekerplant")
+                deOranjeBeker.classList.remove("oranje_bekerplant");
+                inventarisPlaatsen[2].classList.add("oranje_bekerplant");
+                gevondenPlanten++;
             } else if (gepluktePlant == "ingredient_4") {
-                inventarisPlaats4.classList.add("anemoon_plant")
+                deAnemoon.classList.remove("anemoon_plant");
+                inventarisPlaatsen[3].classList.add("anemoon_plant");
+                gevondenPlanten++;
             } else if (gepluktePlant == "ingredient_5") {
-                inventarisPlaats5.classList.add("grijze_bekerplant")
+                deGrijzeBeker.classList.remove("grijze_bekerplant");
+                inventarisPlaatsen[4].classList.add("grijze_bekerplant");
+                gevondenPlanten++;
+            }
+            if (gevondenPlanten == 5) {
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nDit zijn alle kruiden die ik nodig heb. \nSnel naar huis en brouwen maar!\n"
+
+                function typeWriter() {
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
+volgendeLevel.classList.remove("verborgen");
+
             }
         }
 
