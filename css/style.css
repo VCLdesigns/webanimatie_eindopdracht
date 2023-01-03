@@ -40,7 +40,8 @@ body {
   font-size: 2rem;
   line-height: 1.5;
 }
-.verborgen{
+
+.verborgen {
   display: none;
 }
 
@@ -113,7 +114,7 @@ body {
   border: 1px black solid;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -216,7 +217,7 @@ a{
   background-color: grey;
 }
 
-#alchemy_container{
+#alchemy_container {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -225,7 +226,8 @@ a{
   background-size: contain;
   background-position: center;
 }
-#potion{
+
+#potion {
   position: absolute;
   top: 315px;
   left: 316px;
@@ -236,6 +238,218 @@ a{
   background-size: contain;
 
 }
-#potion:hover, .inventaris_plaats, .icon{
+
+#potion:hover,
+.inventaris_plaats,
+.icon {
   cursor: pointer;
+}
+
+#magische_staf,
+#toverboek {
+  margin: 3px;
+  display: block;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+#magische_staf {
+  height: 75%;
+  background-image: url(../img/magische_staf.png);
+
+}
+
+#toverboek {
+  height: 25%;
+  background-image: url(../img/toverboek.png);
+}
+
+#overval_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/overval_plek.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.vijand {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  opacity: 0;
+}
+
+#falmer {
+  background-image: url(../img/falmer.png);
+
+}
+
+#falmer_container {
+  display: block;
+  width: 57px;
+  height: 71px;
+  position: absolute;
+  top: 264px;
+  left: 301px;
+  animation: falmer_beweging 3s linear infinite;
+}
+
+@keyframes falmer_beweging {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(300px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+
+}
+
+#skelet {
+  background-image: url(../img/skelet.png);
+}
+
+#skelet_container {
+  display: block;
+  width: 111px;
+  height: 250px;
+  position: absolute;
+  top: 268px;
+  left: 129px;
+  animation: skelet_beweging 3s linear infinite;
+}
+
+@keyframes skelet_beweging {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(700px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+
+}
+
+#goblin {
+  background-image: url(../img/goblin.png);
+}
+
+#goblin_container {
+  display: block;
+  width: 52px;
+  height: 71px;
+  position: absolute;
+  top: 265px;
+  left: 555px;
+  animation: goblin_beweging 3s linear infinite;
+}
+
+@keyframes goblin_beweging {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-300px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+
+}
+
+#hagraven {
+  background-image: url(../img/hagraven.png);
+}
+
+#hagraven_container {
+  display: block;
+  width: 111px;
+  height: 250px;
+  position: absolute;
+  top: 214px;
+  left: 818px;
+
+  animation: hagraven_beweging 3s linear infinite;
+}
+
+@keyframes hagraven_beweging {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-700px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+
+}
+
+#zwijn {
+  background-image: url(../img/zwijn.png);
+}
+
+#zwijn_container {
+  display: block;
+  width: 111px;
+  height: 250px;
+  position: absolute;
+  top: 384px;
+  right: -111px;
+  animation: zwijn_beweging 10s linear infinite;
+}
+
+@keyframes zwijn_beweging {
+  0% {
+    right: -111px;
+  }
+
+  100% {
+    right: 100%;
+  }
+
+
+}
+
+@keyframes onzichtbaarheidWeg {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+  41% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  61% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
