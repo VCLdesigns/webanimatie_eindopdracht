@@ -113,6 +113,10 @@ body {
   border: 1px black solid;
 }
 
+a{
+  text-decoration: none;
+}
+
 #dialoog_content {
   position: absolute;
   bottom: 0;
@@ -210,4 +214,28 @@ body {
 
 .grijze_bekerplant {
   background-color: grey;
+}
+
+#alchemy_container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/alchemy_lab.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#potion{
+  position: absolute;
+  top: 315px;
+  left: 316px;
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/alchemy_potion.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+#potion:hover, .inventaris_plaats, .icon{
+  cursor: pointer;
 }

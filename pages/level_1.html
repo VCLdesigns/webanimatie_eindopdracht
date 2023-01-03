@@ -48,8 +48,12 @@
                 </div>
                 <div id="menu">
                     <div id="help" class="icon">?</div>
-                    <div id="reset" class="icon">reset</div>
-                    <div id="volgende_level" class="icon verborgen">-></div>
+                    <a href="level_1.html">
+                        <div id="reset" class="icon">&#xf021;</div>
+                    </a>
+                    <a class="" href="level_2.html">
+                        <div id="volgende_level" class="icon verborgen">-></div>
+                    </a>
                 </div>
 
             </div>
@@ -76,7 +80,7 @@
 
         var i = 0;
         var speed = 10;
-        var tekst = "\nHeerlijk die frisse boslucht. \nNu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
+        var tekst = "\nMmm,Heerlijk die frisse boslucht. \nNu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
         console.log(tekst);
         function typeWriter() {
 
@@ -98,22 +102,87 @@
                 deWittePaddestoel.classList.remove("witte_paddestoel");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nDeze witte paddestoel had ik nodig.\nPerfect!";
+                console.log(tekst);
+                function typeWriter() {
+
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
             } else if (gepluktePlant == "ingredient_2") {
                 deVaren.classList.remove("varen");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nDit lijkt de juiste Varen te zijn.";
+                console.log(tekst);
+                function typeWriter() {
+
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
             } else if (gepluktePlant == "ingredient_3") {
                 deOranjeBeker.classList.remove("oranje_bekerplant");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nEen Oranje Bekerplant.\nSuper!";
+                console.log(tekst);
+                function typeWriter() {
+
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
             } else if (gepluktePlant == "ingredient_4") {
                 deAnemoon.classList.remove("anemoon_plant");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nDeze Anemoonplant neem ik alvast mee.";
+                console.log(tekst);
+                function typeWriter() {
+
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
             } else if (gepluktePlant == "ingredient_5") {
                 deGrijzeBeker.classList.remove("grijze_bekerplant");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
+                var i = 0;
+                var speed = 10;
+                var tekst = "\nEen Grijze bekerplant. \nJippie!";
+                console.log(tekst);
+                function typeWriter() {
+
+                    if (i < tekst.length) {
+                        dialoog.innerHTML += tekst.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    }
+                }
+                typeWriter();
             }
             if (gevondenPlanten == 5) {
                 var i = 0;
@@ -128,7 +197,7 @@
                     }
                 }
                 typeWriter();
-volgendeLevel.classList.remove("verborgen");
+                volgendeLevel.classList.remove("verborgen");
 
             }
         }
