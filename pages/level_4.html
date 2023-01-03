@@ -26,6 +26,8 @@
                 <div id="pratende_deur_container">
                     <div id="linker_oog" class="linker_oog oog object"></div>
                     <div id="rechter_oog" class="rechter_oog oog object"></div>
+                    <div id="haar" class="haar object"></div>
+                    <div id="vriendje" class="vriendje object"></div>
 
                 </div>
             </div>
@@ -62,7 +64,7 @@
 
         var i = 0;
         var speed = 10;
-        var tekst = "\n\n\n\n\nWat wil je? Wil je dat ik open ga?\nVergeet het. Eerst een paar opdrachten doen!\nEerst wil ik mijn ogen, daarna wil ik mijn haar.";
+        var tekst = "\n\n\n\n\nWat wil je? Wil je dat ik open ga?\nVergeet het. Eerst een paar opdrachten doen!\nEerst wil ik mijn ogen, daarna wil ik mijn kroon en als laatste wil ik een vriendje!";
         console.log(tekst);
         function typeWriter() {
 
@@ -79,8 +81,6 @@
         function opdrachtVanDeDeur(evt) {
             var huidigObject = evt.currentTarget.getAttribute("id");
             var objectNaarDeur = evt.currentTarget;
-            console.log(huidigObject);
-            console.log(objectNaarDeur);
             if (huidigeOpdracht == 0 || huidigeOpdracht == 1) {
                 if (huidigObject == "linker_oog") {
                     objectNaarDeur.classList.add("linker_oog_deur");
@@ -130,12 +130,63 @@
                     typeWriter();
 
                 }
-                if (huidigeOpdracht == 2){
-                    
+            } else if (huidigeOpdracht == 2) {
+                if (huidigObject == "haar") {
+                    huidigeOpdracht++;
+                    objectNaarDeur.classList.add("haar_deur");
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nMijn kroon! Dat voelt al wat minder fris aan men hoofd.";
+                    console.log(tekst);
+                    function typeWriter() {
+
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+                } else {
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nWaar is mijn kroon?!.";
+                    console.log(tekst);
+                    function typeWriter() {
+
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+
                 }
+
+            } else if (huidigeOpdracht == 3) {
+                if (huidigObject == "vriendje") {
+                    volgendeLevel.classList.remove("verborgen");
+                    objectNaarDeur.classList.add("vriendje_deur");
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nHey vriendje, dat is lang geleden.\nOw ben jij hier ook nog? Ok, ga maar verder. Ik zal je niet tegenhouden.";
+                    console.log(tekst);
+                    function typeWriter() {
+
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+                }
+
             }
+            console.log(huidigeOpdracht)
         }
-      
+
 
     </script>
 
