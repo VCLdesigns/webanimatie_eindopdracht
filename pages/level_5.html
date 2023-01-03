@@ -23,11 +23,26 @@
             </div>
         
             <div id="speelveld_container">
+                <div id="magnus_container"></div>
 
             </div>
             
             <div id="tekst_container">
-
+                <div id="dialoog">
+                    <div id="dialoog_content">
+                        <div id="dialoog_top"></div>
+                        <div id="dialoog_bottom"></div>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div id="help" class="icon">?</div>
+                    <a href="level_5.html">
+                        <div id="reset" class="icon">reset</div>
+                    </a>
+                    <a class="" href="level_bonus.html">
+                        <div id="volgende_level" class="icon verborgen">-></div>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -37,7 +52,22 @@
     </footer>
 
     <script>
+ var dialoog = document.querySelector("#dialoog_content");
+        var volgendeLevel = document.querySelector("#volgende_level");
 
+        var i = 0;
+        var speed = 10;
+        var tekst = "\n\n\n\n\nNee! Hij gebruikt het oog om zich te beschermen.\nAl een geluk weet ik hoe het moet worden uitgeschakeld.\nEens kijken of ik me de juiste volgorde nog herinner.";
+        console.log(tekst);
+        function typeWriter() {
+
+            if (i < tekst.length) {
+                dialoog.innerHTML += tekst.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
     </script>
 
 </body>
