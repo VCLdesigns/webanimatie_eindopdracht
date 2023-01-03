@@ -21,13 +21,31 @@
             <div id="inventaris_container">
 
             </div>
-        
+
             <div id="speelveld_container">
+                <div id="pratende_deur_container">
+                    <div id="linker_oog" class="linker_oog oog object"></div>
+                    <div id="rechter_oog" class="rechter_oog oog object"></div>
 
+                </div>
             </div>
-            
-            <div id="tekst_container">
 
+            <div id="tekst_container">
+                <div id="dialoog">
+                    <div id="dialoog_content">
+                        <div id="dialoog_top"></div>
+                        <div id="dialoog_bottom"></div>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div id="help" class="icon">?</div>
+                    <a href="level_4.html">
+                        <div id="reset" class="icon">reset</div>
+                    </a>
+                    <a class="" href="level_5.html">
+                        <div id="volgende_level" class="icon verborgen">-></div>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -37,6 +55,87 @@
     </footer>
 
     <script>
+        var objecten = document.querySelectorAll(".object");
+        var huidigeOpdracht = 0;
+        var dialoog = document.querySelector("#dialoog_content");
+        var volgendeLevel = document.querySelector("#volgende_level");
+
+        var i = 0;
+        var speed = 10;
+        var tekst = "\n\n\n\n\nWat wil je? Wil je dat ik open ga?\nVergeet het. Eerst een paar opdrachten doen!\nEerst wil ik mijn ogen, daarna wil ik mijn haar.";
+        console.log(tekst);
+        function typeWriter() {
+
+            if (i < tekst.length) {
+                dialoog.innerHTML += tekst.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
+        for (var i = 0; i < objecten.length; i++) {
+            objecten[i].addEventListener("click", opdrachtVanDeDeur);
+        }
+        function opdrachtVanDeDeur(evt) {
+            var huidigObject = evt.currentTarget.getAttribute("id");
+            var objectNaarDeur = evt.currentTarget;
+            console.log(huidigObject);
+            console.log(objectNaarDeur);
+            if (huidigeOpdracht == 0 || huidigeOpdracht == 1) {
+                if (huidigObject == "linker_oog") {
+                    objectNaarDeur.classList.add("linker_oog_deur");
+                    objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
+                    huidigeOpdracht++;
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nMijn linkeroog. Bedankt.";
+                    function typeWriter() {
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+                } else if (huidigObject == "rechter_oog") {
+                    objectNaarDeur.classList.add("rechter_oog_deur");
+                    objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
+                    huidigeOpdracht++;
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nMijn rechteroog. Bedankt.";
+                    function typeWriter() {
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+
+
+                } else {
+                    var i = 0;
+                    var speed = 10;
+                    var tekst = "\nIk zie nog niets! Eerst mijn ogen.";
+                    console.log(tekst);
+                    function typeWriter() {
+
+                        if (i < tekst.length) {
+                            dialoog.innerHTML += tekst.charAt(i);
+                            i++;
+                            setTimeout(typeWriter, speed);
+                        }
+                    }
+                    typeWriter();
+
+                }
+                if (huidigeOpdracht == 2){
+                    
+                }
+            }
+        }
+      
 
     </script>
 

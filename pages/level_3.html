@@ -55,10 +55,10 @@
                 </div>
                 <div id="menu">
                     <div id="help" class="icon">?</div>
-                    <a href="level_2.html">
+                    <a href="level_3.html">
                         <div id="reset" class="icon">reset</div>
                     </a>
-                    <a class="" href="level_3.html">
+                    <a class="" href="level_4.html">
                         <div id="volgende_level" class="icon verborgen">-></div>
                     </a>
                 </div>
@@ -76,18 +76,18 @@
         var dialoog = document.querySelector("#dialoog_content");
         var volgendeLevel = document.querySelector("#volgende_level");
         var i = 0;
-                var speed = 10;
-                var tekst = "\n\n\n\n\nDit ziet eruit als een goede plek om te overnachten.\nBest even checken of het veilig is.\nMijn magische staf houd ik best in de aanslag...Just in case.";
-                console.log(tekst);
-                function typeWriter() {
+        var speed = 10;
+        var tekst = "\n\n\n\n\nDit ziet eruit als een goede plek om te overnachten.\nBest even checken of het veilig is.\nMijn magische staf houd ik best in de aanslag...Just in case.";
+        console.log(tekst);
+        function typeWriter() {
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+            if (i < tekst.length) {
+                dialoog.innerHTML += tekst.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
         for (var i = 0; i < vijanden.length; i++) {
             randomTijd = Math.random() * (8 - 6) + 6;
             randomVertraging = Math.random() * (5 - 1) + 1;
@@ -189,7 +189,7 @@
                 for (var i = 0; i < vijanden.length; i++) {
                     vijanden[i].removeEventListener("click", vijandVerslagen);
 
-                    
+
                 }
             }
         }
