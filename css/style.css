@@ -143,6 +143,9 @@ a {
   width: 50px;
   height: 50px;
   border: black 1px solid;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 
@@ -162,59 +165,69 @@ a {
 
 .ingredient {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .ingredient:hover {
   cursor: pointer;
-  ;
 }
 
 #ingredient_1 {
-  top: 269px;
-  left: 170px;
+  top: 319px;
+  left: 96px;
+  width: 100px;
+  height: 122px;
 }
 
 #ingredient_2 {
-  top: 279px;
-  right: 154px;
+  top: 271px;
+  right: 76px;
+  width: 100px;
+  height: 100px;
 }
 
 #ingredient_3 {
-  top: 258px;
-  left: 667px;
+  top: 295px;
+  left: 646px;
+  width: 73px;
+  height: 86px;
 }
 
 #ingredient_4 {
-  top: 313px;
-  left: 436px;
+  top: 330px;
+  left: 431px;
+  width: 90px;
+  height: 100px;
 }
 
 #ingredient_5 {
-  bottom: 34px;
-  left: 424px;
+  bottom: 14px;
+  left: 419px;
+  width: 100px;
+  height: 100px;
 }
 
 
 .witte_paddestoel {
-  background-color: purple;
+  background-image: url(../img/witte_paddestoel.png);
 }
 
 .varen {
-  background-color: green;
+  background-image: url(../img/varen.png);
 }
 
 .oranje_bekerplant {
-  background-color: orange;
+  background-image: url(../img/oranje_bekerplant.png);
 }
 
 .anemoon_plant {
-  background-color: pink;
+  background-image: url(../img/anemoon.png);
 }
 
 .grijze_bekerplant {
-  background-color: grey;
+  background-image: url(../img/grijze_bekerplant.png);
 }
 
 #alchemy_container {
@@ -529,12 +542,14 @@ a {
   left: 209px;
   transform: scaleX(-1);
 }
-.vriendje_deur{
+
+.vriendje_deur {
   top: 220px;
   left: 505px;
   transform: scaleX(1);
 }
-#magnus_container{
+
+#magnus_container {
   position: absolute;
   width: 100%;
   height: 100%;
