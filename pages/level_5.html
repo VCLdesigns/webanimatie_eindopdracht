@@ -2,37 +2,38 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>Level 5</title>
 </head>
 
 <body>
-
-    <header>
-
-
-    </header>
+    <header></header>
 
     <main>
         <div id="container">
             <div id="inventaris_container">
-
+                <div id="blue_circle" class="inventaris_plaats magische_cirkel"></div>
+                <div id="green_circle" class="inventaris_plaats magische_cirkel"></div>
+                <div id="black_circle" class="inventaris_plaats magische_cirkel"></div>
             </div>
-        
+
             <div id="speelveld_container">
-                <div id="magnus_container"></div>
-
+                <div id="magnus_container">
+                    <div id="control_spell">
+                        <div class="spell_effect" data-volgorde="3"></div>
+                        <div class="spell_effect" data-volgorde="1"></div>
+                        <div class="spell_effect" data-volgorde="4"></div>
+                        <div class="spell_effect" data-volgorde="2"></div>
+                        <div class="spell_effect" data-volgorde="5"></div>
+                    </div>
+                </div>
             </div>
-            
+
             <div id="tekst_container">
                 <div id="dialoog">
-                    <div id="dialoog_content">
-                        <div id="dialoog_top"></div>
-                        <div id="dialoog_bottom"></div>
-                    </div>
                 </div>
                 <div id="menu">
                     <div id="help" class="icon">?</div>
@@ -47,29 +48,88 @@
         </div>
     </main>
 
-    <footer>
-
-    </footer>
+    <footer></footer>
 
     <script>
- var dialoog = document.querySelector("#dialoog_content");
+        var magischeCirkels = document.querySelectorAll(".magische_cirkel");
+        var juisteCirkelGekozen = false;
+        var controlSpell = document.querySelector("#control_spell");
+        var magischeEffecten = document.querySelectorAll(".spell_effect");
+        var spellEffectVolgorde = 0;
+        var magnusContainer = document.querySelector("#magnus_container")
+        var dialoog = document.querySelector("#dialoog");
         var volgendeLevel = document.querySelector("#volgende_level");
 
-        var i = 0;
-        var speed = 10;
-        var tekst = "\n\n\n\n\nNee! Hij gebruikt het oog om zich te beschermen.\nAl een geluk weet ik hoe het moet worden uitgeschakeld.\nEens kijken of ik me de juiste volgorde nog herinner.";
-        console.log(tekst);
-        function typeWriter() {
+        dialoog.innerHTML = "Nee! Wat doe je? Ancona stop! Je vernietigt ons allen als je zo blijft voordoen.<br>Al een geluk weet ik hoe het moet worden uitgeschakeld. <br>Eerst en vooral de juiste cirkel kiezen.<br>Kynareth's bezwering vereist een cirkel met all windrichtingen.";
+        for (var i = 0; i < magischeCirkels.length; i++) {
+            magischeCirkels[i].addEventListener("click", cirkelKiezen);
+        }
+        function cirkelKiezen(evt) {
+            var gekozenCirkel = evt.currentTarget.getAttribute("id");
+            if (gekozenCirkel == "blue_circle") {
+                dialoog.innerHTML = "De bezwering ging als volgt:<br>Kynareth, Ik roep u op!<br>Eerst in het Noorden, ijs volgt mij!<br>Dan in het Zuiden, vuur verslind mij!<br>Westwaarts, waar duisternis heerst!<br>Oostwaarts, waar mijn pad word verlicht!<br>Kom naar mij door het Midden van alles heen!";
+                for (var i = 0; i < magischeCirkels.length; i++) {
+                    magischeCirkels[i].removeEventListener("click", cirkelKiezen);
+                }
+                controlSpell.style.opacity = "1";
+                juisteCirkelGekozen = true;
 
-            if (i < tekst.length) {
-                dialoog.innerHTML += tekst.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
+            } else {
+                dialoog.innerHTML = "Deze lijkt me niet te kloppen. Hier ga ik geen windrichtingen op kunnen aanduiden.";
+
             }
         }
-        typeWriter();
-    </script>
+        for (var i = 0; i < magischeEffecten.length; i++) {
+            magischeEffecten[i].addEventListener("click", richtingAanduiden);
+        }
 
+        function richtingAanduiden(evt) {
+            if (juisteCirkelGekozen == true) {
+                var gekozenRichting = evt.currentTarget.getAttribute("data-volgorde");
+                if (gekozenRichting == "1" && spellEffectVolgorde == 0) {
+                    dialoog.innerHTML = "Kynareth, Ik roep u op!\nEerst in het Noorden, ijs volgt mij!";
+
+                    spellEffectVolgorde = 1;
+                    evt.currentTarget.style.opacity = "1";
+                } else if (gekozenRichting == "2" && spellEffectVolgorde == 1) {
+                    dialoog.innerHTML = "Dan in het Zuiden, Vuur verslind mij!";
+
+                    spellEffectVolgorde = 2;
+                    evt.currentTarget.style.opacity = "1";
+                } else if (gekozenRichting == "3" && spellEffectVolgorde == 2) {
+                    dialoog.innerHTML = "Oostwaarts, waar mijn pad word verlicht!";
+
+                    spellEffectVolgorde = 3;
+                    evt.currentTarget.style.opacity = "1";
+                } else if (gekozenRichting == "4" && spellEffectVolgorde == 3) {
+                    dialoog.innerHTML = "Westwaarts, waar duisternis heerst!";
+
+                    spellEffectVolgorde = 4;
+                    evt.currentTarget.style.opacity = "1";
+                } else if (gekozenRichting == "5" && spellEffectVolgorde == 4) {
+                    dialoog.innerHTML = "Kom naar mij door het Midden van alles heen! <br> ... <br> ... <br> De rust keert weder en het lijkt erop dat Ancano door het Artifact werd opgezogen toen ik het sloot. <br>Dat zal hem leren!";
+                    magnusContainer.style.backgroundImage = "url(../img/eye_of_magnus_defeated.jpg)"
+                    evt.currentTarget.style.opacity = "1";
+                    for (var i = 0; i < magischeEffecten.length; i++) {
+                        magischeEffecten[i].style.opacity = "0";
+                    }
+                    controlSpell.style.opacity = "0";
+                } else {
+
+                    spellEffectVolgorde = 0;
+                    for (var i = 0; i < magischeEffecten.length; i++) {
+                        magischeEffecten[i].style.opacity = "0";
+                    }
+                    dialoog.innerHTML = "Oops, dit ging verkeerd... <br>Opnieuw!";
+
+                }
+            } else {
+                dialoog.innerHTML = "Eerst de juiste cirkel kiezen!";
+
+            }
+        }
+
+    </script>
 </body>
 
 </html>

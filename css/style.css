@@ -23,7 +23,6 @@ img {
   display: block;
 }
 
-
 /*
   /* Standards */
 html {
@@ -86,13 +85,13 @@ body {
 
 #dialoog {
   position: absolute;
-  top: 25px;
+  top: 5px;
   left: 200px;
   width: 750px;
-  height: 150px;
+  height: 190px;
   border: black 1px solid;
   overflow: auto;
-  white-space: pre-wrap;
+  padding: 2rem;
 }
 
 #menu {
@@ -118,38 +117,15 @@ a {
   text-decoration: none;
 }
 
-#dialoog_content {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 10px;
 
-}
-
-#dialoog_top {
-  width: 100%;
-  min-height: 100px;
-  padding-top: 50px;
-  background-color: crimson;
-}
-
-#dialoog_bottom {
-  width: 100%;
-  padding: 50px 10px 0 0;
-  background-color: darkblue;
-}
 
 .inventaris_plaats {
   width: 50px;
   height: 50px;
-  border: black 1px solid;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
-
-
-
 
 #bos_container {
   position: absolute;
@@ -209,7 +185,6 @@ a {
   height: 100px;
 }
 
-
 .witte_paddestoel {
   background-image: url(../img/witte_paddestoel.png);
 }
@@ -249,7 +224,6 @@ a {
   background-image: url(../img/alchemy_potion.png);
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
 #potion:hover,
@@ -271,7 +245,6 @@ a {
 #magische_staf {
   height: 75%;
   background-image: url(../img/magische_staf.png);
-
 }
 
 #toverboek {
@@ -288,6 +261,9 @@ a {
   background-size: contain;
   background-position: center center;
 }
+#overval_container:hover{
+  cursor: url(../img/magische_staf_cursor.png), auto;
+}
 
 .vijand {
   position: absolute;
@@ -300,9 +276,9 @@ a {
   opacity: 0;
 }
 
+
 #falmer {
   background-image: url(../img/falmer.png);
-
 }
 
 #falmer_container {
@@ -312,7 +288,7 @@ a {
   position: absolute;
   top: 264px;
   left: 301px;
-  animation: falmer_beweging 3s linear infinite;
+  animation: falmer_beweging 4s linear infinite;
 }
 
 @keyframes falmer_beweging {
@@ -327,7 +303,6 @@ a {
   100% {
     transform: translateX(0px);
   }
-
 }
 
 #skelet {
@@ -341,7 +316,7 @@ a {
   position: absolute;
   top: 268px;
   left: 129px;
-  animation: skelet_beweging 3s linear infinite;
+  animation: skelet_beweging 5s linear infinite;
 }
 
 @keyframes skelet_beweging {
@@ -356,7 +331,6 @@ a {
   100% {
     transform: translateX(0px);
   }
-
 }
 
 #goblin {
@@ -370,7 +344,7 @@ a {
   position: absolute;
   top: 265px;
   left: 555px;
-  animation: goblin_beweging 3s linear infinite;
+  animation: goblin_beweging 4s linear infinite;
 }
 
 @keyframes goblin_beweging {
@@ -385,7 +359,6 @@ a {
   100% {
     transform: translateX(0px);
   }
-
 }
 
 #hagraven {
@@ -400,7 +373,7 @@ a {
   top: 214px;
   left: 818px;
 
-  animation: hagraven_beweging 3s linear infinite;
+  animation: hagraven_beweging 5s linear infinite;
 }
 
 @keyframes hagraven_beweging {
@@ -415,7 +388,6 @@ a {
   100% {
     transform: translateX(0px);
   }
-
 }
 
 #zwijn {
@@ -429,7 +401,7 @@ a {
   position: absolute;
   top: 384px;
   right: -111px;
-  animation: zwijn_beweging 10s linear infinite;
+  animation: zwijn_beweging 8s linear infinite;
 }
 
 @keyframes zwijn_beweging {
@@ -440,8 +412,6 @@ a {
   100% {
     right: 100%;
   }
-
-
 }
 
 @keyframes onzichtbaarheidWeg {
@@ -557,4 +527,60 @@ a {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
+}
+#blue_circle, #control_spell{
+  background-image: url(../img/arcane_circle2.png);
+}
+#green_circle{
+  background-image: url(../img/arcane_circle3.png);
+}
+#black_circle{
+  background-image: url(../img/arcane_circle4.png);
+
+}
+#control_spell {
+  position: absolute;
+  top: 94px;
+  left: 317px;
+  display: block;
+  width: 360px;
+    height: 340px;
+  background-image: url(../img/arcane_circle2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: saturate(500%);
+  opacity: 0;
+}
+.spell_effect {
+  position: absolute;
+  display: block;
+  width: 75px;
+  height: 75px;
+  background-image: url(../img/arcane_effect2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+.spell_effect:hover{
+  cursor: pointer;
+}
+#control_spell div:nth-of-type(1) {
+  top: 136px;
+  left: 24px;
+}
+#control_spell div:nth-of-type(2) {
+  top: 23px;
+  left: 140px;
+}
+#control_spell div:nth-of-type(3) {
+  top: 136px;
+  left: 254px;
+}
+#control_spell div:nth-of-type(4) {
+  top: 247px;
+  left: 140px;
+}
+#control_spell div:nth-of-type(5) {
+  top: 136px;
+  left: 136px;
 }

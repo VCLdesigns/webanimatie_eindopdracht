@@ -21,11 +21,14 @@
         <div id="container">
             <div id="inventaris_container">
                 Inventaris
-                <div class="inventaris_plaats witte_paddestoel" data-plant="witte_paddestoel" title=" Witte Paddestoel"></div>
-                <div class="inventaris_plaats varen" data-plant="varen"  title="Varen"></div>
-                <div class="inventaris_plaats oranje_bekerplant" data-plant="oranje_bekerplant" title="Oranje Bekerplant"></div>
+                <div class="inventaris_plaats witte_paddestoel" data-plant="witte_paddestoel" title=" Witte Paddestoel">
+                </div>
+                <div class="inventaris_plaats varen" data-plant="varen" title="Varen"></div>
+                <div class="inventaris_plaats oranje_bekerplant" data-plant="oranje_bekerplant"
+                    title="Oranje Bekerplant"></div>
                 <div class="inventaris_plaats anemoon_plant" data-plant="anemoon_plant" title="Anemoon"></div>
-                <div class="inventaris_plaats grijze_bekerplant" data-plant="grijze_bekerplant" title="Grijze Bekerplant"></div>
+                <div class="inventaris_plaats grijze_bekerplant" data-plant="grijze_bekerplant"
+                    title="Grijze Bekerplant"></div>
 
             </div>
 
@@ -71,20 +74,7 @@
         var vierdeIngredient = false;
         var dialoog = document.querySelector("#dialoog_content");
         var volgendeLevel = document.querySelector("#volgende_level");
-        var i = 0;
-        var speed = 10;
-        var tekst = "\n\n\n\n\n\nNu even goed opletten.\nAls ik het goed heb gelezen dan is de juiste volgorde:\nVaren, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
-        console.log(tekst);
-        function typeWriter() {
-
-            if (i < tekst.length) {
-                dialoog.innerHTML += tekst.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        typeWriter();
-
+        dialoog.innerHTML = "Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde:\nVaren, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
         for (var i = 0; i < inventaris.length; i++) {
             inventaris[i].addEventListener("click", kiesIngredient);
         }
@@ -97,100 +87,33 @@
             if (gekozenIngredient == "varen") {
                 inventaris[1].classList.remove("varen");
                 eersteIngredient = true;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nEerst de Varen toevoegen en even laten sudderen.";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Eerst de Varen toevoegen en even laten sudderen.";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (gekozenIngredient == "witte_paddestoel" && eersteIngredient == true) {
                 inventaris[0].classList.remove("witte_paddestoel");
                 tweedeIngredient = true;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nDaarna de witte Paddestoel, al roerend.";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Daarna de witte Paddestoel, al roerend.";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (gekozenIngredient == "grijze_bekerplant" && tweedeIngredient == true) {
                 inventaris[4].classList.remove("grijze_bekerplant");
                 derdeIngredient = true;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nHet volgende ingrediënt is de Grijze Beker. Deze moet ik eerst pletten.";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML = "Het volgende ingrediënt is de Grijze Beker. Deze moet ik eerst pletten.";
             } else if (gekozenIngredient == "oranje_bekerplant" && derdeIngredient == true) {
                 inventaris[2].classList.remove("oranje_bekerplant");
                 vierdeIngredient = true;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nNu heel voorzichtig de Oranje Beker toevoegen. Best even niet ademen door men neus. Dit gaat stinken!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Nu heel voorzichtig de Oranje Beker toevoegen. Best even niet ademen door men neus. Dit gaat stinken!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (gekozenIngredient == "anemoon_plant" && vierdeIngredient == true) {
                 inventaris[3].classList.remove("anemoon_plant");
                 volgendeLevel.classList.remove("verborgen");
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nEn als laatste. De Anemoon. Deze kleur rood is perfect.\nDit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen!\nVolgende stap van mijn plan, naar de toren gaan!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "En als laatste. De Anemoon. Deze kleur rood is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Volgende stap van mijn plan, naar de toren gaan!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else {
                 for (var i = 0; i < inventaris.length; i++) {
-            inventaris[i].removeEventListener("click", kiesIngredient);
-        }
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nAj, Hier ging iets mis. Volgens mij heb ik me vergist!\nHier kan ik niets meer met doen.\nIk begin best opnieuw!";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
+                    inventaris[i].removeEventListener("click", kiesIngredient);
                 }
-                typeWriter();
+                dialoog.innerHTML = "Aj, Hier ging iets mis. Volgens mij heb ik me vergist! <br>Hier kan ik niets meer met doen. <br> Ik begin best opnieuw!";
+
             }
 
         }

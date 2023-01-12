@@ -75,19 +75,8 @@
         var verslagen = 0;
         var dialoog = document.querySelector("#dialoog_content");
         var volgendeLevel = document.querySelector("#volgende_level");
-        var i = 0;
-        var speed = 10;
-        var tekst = "\n\n\n\n\nDit ziet eruit als een goede plek om te overnachten.\nBest even checken of het veilig is.\nMijn magische staf houd ik best in de aanslag...Just in case.";
-        console.log(tekst);
-        function typeWriter() {
+        dialoog.innerHTML = "Dit ziet eruit als een goede plek om te overnachten.<br>Best even checken of het veilig is.<br>Mijn magische staf houd ik best in de aanslag...Ik voel magie. Volgens mij zijn er onzichtbare vijanden!<br>";
 
-            if (i < tekst.length) {
-                dialoog.innerHTML += tekst.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        typeWriter();
         for (var i = 0; i < vijanden.length; i++) {
             randomTijd = Math.random() * (8 - 6) + 6;
             randomVertraging = Math.random() * (5 - 1) + 1;
@@ -100,92 +89,26 @@
             vijandGeraakt.style.animation = "none";
             vijandGeraakt.removeEventListener("click", vijandVerslagen);
             if (vijandGeraakt.getAttribute("id") == "falmer") {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nBliksemschicht!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Bliksemschicht!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (vijandGeraakt.getAttribute("id") == "skelet") {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nHeilig Woord!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Heilig Woord!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (vijandGeraakt.getAttribute("id") == "goblin") {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nBloedvloek!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Bloedvloek!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (vijandGeraakt.getAttribute("id") == "hagraven") {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nBevroren Speer!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Bevroren Speer!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             } else if (vijandGeraakt.getAttribute("id") == "zwijn") {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nVuurbal!";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Vuurbal!";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
             }
             verslagen++;
             if (verslagen == 5) {
                 volgendeLevel.classList.remove("verborgen");
-                var i = 0;
-                var speed = 10;
-                var tekst = "\n\n\n\n\nDat was de laatste! Zo dit ziet er al een pak veiliger uit.\nEn gebraden zwijn als avondeten! Nice.\nMorgenvroeg zet ik mijn toch verder. Mijn doel is dichtbij.";
-                console.log(tekst);
-                function typeWriter() {
+                dialoog.innerHTML = "Dat was de laatste! Zo dit ziet er al een pak veiliger uit.<br>En gebraden zwijn als avondeten! Nice.<br>Morgenvroeg zet ik mijn tocht verder. Mijn doel is dichtbij.";
 
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
                 for (var i = 0; i < vijanden.length; i++) {
                     vijanden[i].removeEventListener("click", vijandVerslagen);
 

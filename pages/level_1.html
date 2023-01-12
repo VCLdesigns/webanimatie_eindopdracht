@@ -73,26 +73,10 @@
         var deAnemoon = document.querySelector("#ingredient_4");
         var deGrijzeBeker = document.querySelector("#ingredient_5");
         var ingredienten = document.querySelectorAll(".ingredient");
-        var dialoog = document.querySelector("#dialoog_content");
+        var dialoog = document.querySelector("#dialoog");
         var volgendeLevel = document.querySelector("#volgende_level");
 
-
-
-        var i = 0;
-        var speed = 10;
-        var tekst = "\nMmm,Heerlijk die frisse boslucht. \nNu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
-        console.log(tekst);
-        function typeWriter() {
-
-            if (i < tekst.length) {
-                dialoog.innerHTML += tekst.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-        typeWriter();
-
-
+        dialoog.innerHTML = "Mmm,Heerlijk die frisse boslucht. <br>Nu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
         for (var i = 0; i < ingredienten.length; i++) {
             ingredienten[i].addEventListener("click", ingredientGevonden);
         }
@@ -102,102 +86,37 @@
                 deWittePaddestoel.classList.remove("witte_paddestoel");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nDeze witte paddestoel had ik nodig.\nPerfect!";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML =  "Deze witte paddestoel had ik nodig.<br>Perfect!";
+                
             } else if (gepluktePlant == "ingredient_2") {
                 deVaren.classList.remove("varen");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nDit lijkt de juiste Varen te zijn.";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML =  "Dit lijkt de juiste Varen te zijn.";
+                
             } else if (gepluktePlant == "ingredient_3") {
                 deOranjeBeker.classList.remove("oranje_bekerplant");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nEen Oranje Bekerplant.\nSuper!";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML =  "Een Oranje Bekerplant.\nSuper!";
+                
             } else if (gepluktePlant == "ingredient_4") {
                 deAnemoon.classList.remove("anemoon_plant");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nDeze Anemoonplant neem ik alvast mee.";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML =  "Deze Anemoonplant neem ik alvast mee.";
+                
             } else if (gepluktePlant == "ingredient_5") {
                 deGrijzeBeker.classList.remove("grijze_bekerplant");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nEen Grijze bekerplant. \nJippie!";
-                console.log(tekst);
-                function typeWriter() {
-
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
+                dialoog.innerHTML =  "Een Grijze bekerplant. \nJippie!";
+                
             }
             if (gevondenPlanten == 5) {
-                var i = 0;
-                var speed = 10;
-                var tekst = "\nDit zijn alle kruiden die ik nodig heb. \nSnel naar huis en brouwen maar!\n"
+                dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. \nSnel naar huis en brouwen maar!"
 
-                function typeWriter() {
-                    if (i < tekst.length) {
-                        dialoog.innerHTML += tekst.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, speed);
-                    }
-                }
-                typeWriter();
-                volgendeLevel.classList.remove("verborgen");
+                            volgendeLevel.classList.remove("verborgen");
 
             }
         }
