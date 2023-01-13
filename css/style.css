@@ -126,6 +126,16 @@ body {
 .gezicht_uil {
   background-image: url(../img/gezicht_uil.png);
 }
+.gezicht_nagl{
+  background-image: url(../img/gezicht_nagl.png);
+}
+#intro_container{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/thuis.jpg);
+}
 
 #dialoog {
   position: absolute;
@@ -155,15 +165,7 @@ body {
   padding: 0.25rem;
 }
 
-a {
-  text-decoration: none;
-  color: var(--kleur_zwart);
-}
 
-a:hover,
-a:visited {
-  color: var(--kleur_zwart);
-}
 svg {
   font-size: 3rem;
   transform: scale(0.9);
@@ -572,4 +574,11 @@ svg:hover {
 #control_spell div:nth-of-type(5) {
   top: 136px;
   left: 136px;
+}
+
+footer{
+  display: flex;
+  justify-content: space-around;
+  color: var(--kleur_wit);
+  font-weight: 100;
 }

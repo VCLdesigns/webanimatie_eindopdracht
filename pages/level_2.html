@@ -13,29 +13,26 @@
 
 <body>
 
-    <header>
-
-
-    </header>
-
     <main>
         <!-- 1200px op 800px max!-->
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
-                <div class="inventaris_plaats background_contain border witte_paddestoel" data-plant="witte_paddestoel" title=" Witte Paddestoel">
+                <div class="inventaris_plaats background_contain border witte_paddestoel" data-plant="witte_paddestoel"
+                    title=" Witte Paddestoel">
                 </div>
                 <div class="inventaris_plaats background_contain border varen" data-plant="varen" title="Varen"></div>
-                <div class="inventaris_plaats background_contain border oranje_bekerplant" data-plant="oranje_bekerplant"
-                    title="Oranje Bekerplant"></div>
-                <div class="inventaris_plaats background_contain border anemoon_plant" data-plant="anemoon_plant" title="Anemoon"></div>
-                <div class="inventaris_plaats background_contain border grijze_bekerplant" data-plant="grijze_bekerplant"
-                    title="Grijze Bekerplant"></div>
+                <div class="inventaris_plaats background_contain border oranje_bekerplant"
+                    data-plant="oranje_bekerplant" title="Oranje Bekerplant"></div>
+                <div class="inventaris_plaats background_contain border anemoon_plant" data-plant="anemoon_plant"
+                    title="Anemoon"></div>
+                <div class="inventaris_plaats background_contain border grijze_bekerplant"
+                    data-plant="grijze_bekerplant" title="Grijze Bekerplant"></div>
 
             </div>
 
             <div id="speelveld_container" class="absolute border background_black">
                 <div id="alchemy_container" class="absolute background_contain">
-                    <div id="potion" class= "absolute background_contain"></div>
+                    <div id="potion" class="absolute background_contain"></div>
                 </div>
             </div>
 
@@ -46,23 +43,23 @@
                     <div id="help" class="icon border">
                         <i class="fa-solid fa-question"></i>
                     </div>
-                   
-                        <div id="reset" class="icon border">
-                            <i class="fa-solid fa-recycle"></i>
-                        </div>
-                
-                    <a href="level_3.html">
-                        <div id="volgende_level" class="icon border">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </a>
+
+                    <div id="reset" class="icon border">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+
+                    <div id="volgende_level" class="icon border">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-
+    <footer class = "background_black">
+        <h6>Copyright &copy; Victor Loots,2023</h6>
+        <h6>Webanimatie2 @ Encora</h6>
     </footer>
 
     <script>
@@ -86,13 +83,22 @@
         }
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
+        var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl")
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
-
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
+            }else if(huidigeHelp == 1){
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het drankje om het weg te gooien en opnieuw te beginnen.'");
+            }else if(huidigeHelp == 2){
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het pijltje om Ancano te gaan zoeken.'");
+            }
+            
         }
-        dialoog.innerHTML = "Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde:\nVaren, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
+        gezichtContainer.classList.add("gezicht_nagl");
+        dialoog.innerHTML = "Nagl: <br> 'Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde: <br>Varen, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
         for (var i = 0; i < inventaris.length; i++) {
             inventaris[i].addEventListener("click", kiesIngredient);
         }
@@ -105,32 +111,40 @@
             if (gekozenIngredient == "varen") {
                 inventaris[1].classList.remove("varen");
                 eersteIngredient = true;
-                dialoog.innerHTML = "Eerst de Varen toevoegen en even laten sudderen.";
+                dialoog.innerHTML = "Nagl: <br> 'Eerst de Varen. <br> Even laten sudderen.'";
 
             } else if (gekozenIngredient == "witte_paddestoel" && eersteIngredient == true) {
                 inventaris[0].classList.remove("witte_paddestoel");
                 tweedeIngredient = true;
-                dialoog.innerHTML = "Daarna de witte Paddestoel, al roerend.";
+                dialoog.innerHTML = "Nagl: <br> 'Daarna de witte Paddestoel. <br>Zeker goed blijven roeren.'";
 
             } else if (gekozenIngredient == "grijze_bekerplant" && tweedeIngredient == true) {
                 inventaris[4].classList.remove("grijze_bekerplant");
                 derdeIngredient = true;
-                dialoog.innerHTML = "Het volgende ingrediënt is de Grijze Beker. Deze moet ik eerst pletten.";
+                dialoog.innerHTML = "Nagl: <br> 'Het volgende ingredient is de Grijze Beker. <br> Deze moet ik eerst pletten.'";
             } else if (gekozenIngredient == "oranje_bekerplant" && derdeIngredient == true) {
                 inventaris[2].classList.remove("oranje_bekerplant");
                 vierdeIngredient = true;
-                dialoog.innerHTML = "Nu heel voorzichtig de Oranje Beker toevoegen. Best even niet ademen door men neus. Dit gaat stinken!";
+                dialoog.innerHTML = "Nagl: <br> 'Nu heel voorzichtig de Oranje Beker toevoegen. <br> Best even niet ademen door men neus. Dit gaat stinken!'";
 
             } else if (gekozenIngredient == "anemoon_plant" && vierdeIngredient == true) {
                 inventaris[3].classList.remove("anemoon_plant");
-                volgendeLevel.classList.remove("verborgen");
-                dialoog.innerHTML = "En als laatste. De Anemoon. Deze kleur rood is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Volgende stap van mijn plan, naar de toren gaan!";
+                huidigeHelp = 2;
+                dialoog.innerHTML = "Nagl: <br> 'En als laatste. De Anemoon. <br>Deze kleur rood is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Schol!'";
+                var volgendePagina = document.querySelector("#volgende_level");
+                volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                function gaNaarVolgendeLevel(evt) {
+                    window.location = "level_3.html"
+                }
 
             } else {
                 for (var i = 0; i < inventaris.length; i++) {
                     inventaris[i].removeEventListener("click", kiesIngredient);
                 }
-                dialoog.innerHTML = "Aj, Hier ging iets mis. Volgens mij heb ik me vergist! <br>Hier kan ik niets meer met doen. <br> Ik begin best opnieuw!";
+                huidigeHelp = 1;
+                gezichtContainer.classList.remove("gezicht_nagl")
+                gezichtContainer.classList.add("gezicht_uil");
+                dialoog.innerHTML = "Skarin: <br> 'Yuck wat een geur. Hier ging iets mis. Volgens mij heb je je vergist! <br>Begin maar beter opnieuw. '";
 
             }
 

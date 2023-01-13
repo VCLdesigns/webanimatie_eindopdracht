@@ -18,52 +18,52 @@
 
     </header>
 
-    <main>
-        <!-- 1200px op 800px max!-->
-        <div id="container" class="relative center_margin">
-            <div id="inventaris_container" class="absolute flex border background_black">
+    <main></main>
+    <div id="container" class="relative center_margin">
+        <div id="inventaris_container" class="absolute flex border background_black">
+            <div class="inventaris_plaats background_contain border"></div>
+            <div class="inventaris_plaats background_contain border"></div>
+            <div class="inventaris_plaats background_contain border"></div>
+            <div class="inventaris_plaats background_contain border"></div>
+            <div class="inventaris_plaats background_contain border"></div>
+        </div>
 
-                <div class="inventaris_plaats background_contain border"></div>
-                <div class="inventaris_plaats background_contain border"></div>
-                <div class="inventaris_plaats background_contain border"></div>
-                <div class="inventaris_plaats background_contain border"></div>
-                <div class="inventaris_plaats background_contain border"></div>
-
-            </div>
-
-            <div id="speelveld_container" class="absolute border background_black">
-                <div id="bos_container" class="absolute background_contain">
-                    <div id="ingredient_1" class="ingredient absolute background_contain witte_paddestoel" title=" Witte Paddestoel"></div>
-                    <div id="ingredient_2" class="ingredient absolute background_contain varen" title="Varen"></div>
-                    <div id="ingredient_3" class="ingredient absolute background_contain oranje_bekerplant" title="Oranje Bekerplant"></div>
-                    <div id="ingredient_4" class="ingredient absolute background_contain anemoon_plant" title="Anemoon"></div>
-                    <div id="ingredient_5" class="ingredient absolute background_contain grijze_bekerplant" title="Grijze Bekerplant"></div>
+        <div id="speelveld_container" class="absolute border background_black">
+            <div id="bos_container" class="absolute background_contain">
+                <div id="ingredient_1" class="ingredient absolute background_contain witte_paddestoel"
+                    title=" Witte Paddestoel"></div>
+                <div id="ingredient_2" class="ingredient absolute background_contain varen" title="Varen"></div>
+                <div id="ingredient_3" class="ingredient absolute background_contain oranje_bekerplant"
+                    title="Oranje Bekerplant"></div>
+                <div id="ingredient_4" class="ingredient absolute background_contain anemoon_plant" title="Anemoon">
                 </div>
-            </div>
-
-            <div id="tekst_container" class="absolute border background_black">
-                <div id="gezicht_container" class="absolute border"></div>
-                <div id="dialoog" class="absolute border"> </div>
-                <div id="menu" class="absolute flex border">
-                    <div id="help" class="icon border">
-                        <i class="fa-solid fa-question"></i>
-                    </div>
-
-                    <div id="reset" class="icon border">
-                        <i class="fa-solid fa-recycle"></i>
-                    </div>
-
-                    <a href="level_2.html">
-                        <div id="volgende_level" class="icon border">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
+                <div id="ingredient_5" class="ingredient absolute background_contain grijze_bekerplant"
+                    title="Grijze Bekerplant"></div>
             </div>
         </div>
+
+        <div id="tekst_container" class="absolute border background_black">
+            <div id="gezicht_container" class="absolute border"></div>
+            <div id="dialoog" class="absolute border"> </div>
+            <div id="menu" class="absolute flex border">
+                <div id="help" class="icon border">
+                    <i class="fa-solid fa-question"></i>
+                </div>
+
+                <div id="reset" class="icon border">
+                    <i class="fa-solid fa-recycle"></i>
+                </div>
+
+                <div id="volgende_level" class="icon border">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
     </main>
 
-    <footer>
+    <footer class = "background_black">
 
     </footer>
 
@@ -87,14 +87,20 @@
         }
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
+        var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl")
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Je hebt zeker de volgende ingredienten nodig: een Witte Paddestoel, een Groene Varen, een Oranje Bekerplant, een Grijze Bekerplant en een Anemoonplant'");
+            } else if (huidigeHelp == 1) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Druk op het pijltje om naar je lab te gaan.'");
+            }
 
         }
-
-        dialoog.innerHTML = "Mmm,Heerlijk die frisse boslucht. <br>Nu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
+        gezichtContainer.classList.add("gezicht_nagl");
+        dialoog.innerHTML = "Nagl: <br> 'Mmm, Heerlijk die frisse boslucht! <br> Nu moet ik op zoek gaan naar alle ingredienten voor mijn drankje.'";
         for (var i = 0; i < ingredienten.length; i++) {
             ingredienten[i].addEventListener("click", ingredientGevonden);
         }
@@ -104,37 +110,53 @@
                 deWittePaddestoel.classList.remove("witte_paddestoel");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
+                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Deze witte paddestoel had ik nodig.<br>Perfect!";
 
             } else if (gepluktePlant == "ingredient_2") {
                 deVaren.classList.remove("varen");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
+                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Dit lijkt de juiste Varen te zijn.";
 
             } else if (gepluktePlant == "ingredient_3") {
                 deOranjeBeker.classList.remove("oranje_bekerplant");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
-                dialoog.innerHTML = "Een Oranje Bekerplant.\nSuper!";
+                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Een Oranje Bekerplant.<br> Super!";
 
             } else if (gepluktePlant == "ingredient_4") {
                 deAnemoon.classList.remove("anemoon_plant");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
+                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Deze Anemoonplant neem ik alvast mee.";
 
             } else if (gepluktePlant == "ingredient_5") {
                 deGrijzeBeker.classList.remove("grijze_bekerplant");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
-                dialoog.innerHTML = "Een Grijze bekerplant. \nJippie!";
+                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Een Grijze bekerplant. <br> Jippie!";
 
             }
             if (gevondenPlanten == 5) {
-                dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. \nSnel naar huis en brouwen maar!"
+                var volgendePagina = document.querySelector("#volgende_level");
+                volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                function gaNaarVolgendeLevel(evt) {
+                    window.location = "level_2.html"
+                }
+                huidigeHelp = 1
+                dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. <br>Snel naar huis en brouwen maar!"
 
-                volgendeLevel.classList.remove("verborgen");
+
 
             }
         }

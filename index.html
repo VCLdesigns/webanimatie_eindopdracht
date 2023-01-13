@@ -13,35 +13,37 @@
 <body>
     <main>
         <div id="container" class="relative center_margin">
-            <div id="inventaris_container" class="absolute flex border background_black"></div>
+            <div id="inventaris_container" class="absolute flex border background_black">
+                <div id="magische_staf" class="background_contain"></div>
+                <div id="toverboek" class="background_contain"></div>
+            </div>
 
             <div id="speelveld_container" class="absolute border background_black">
-                <div id="intro_container" class="absolute"></div>
+                <div id="intro_container" class="absolute background_contain"></div>
             </div>
 
             <div id="tekst_container" class="absolute border background_black">
-                <div id="gezicht_container" class="absolute border"></div>
-                <div id="dialoog" class="absolute border"> </div>
+                <div id="gezicht_container" class=" absolute border"></div>
+                <div id="dialoog" class="absolute border"></div>
                 <div id="menu" class="absolute flex border">
                     <div id="help" class="icon border">
                         <i class="fa-solid fa-question"></i>
                     </div>
-                   
-                        <div id="reset" class="icon border">
-                            <i class="fa-solid fa-recycle"></i>
-                        </div>
-                
-                    <a href="pages/level_1.html">
-                        <div id="volgende_level" class="icon border">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </a>
+
+                    <div id="reset" class="icon border">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+
+                    <div id="volgende_level" class="icon border">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
+    <footer class = "background_black">
         <h6>Copyright &copy; Victor Loots,2023</h6>
         <h6>Webanimatie2 @ Encora</h6>
     </footer>
@@ -50,6 +52,8 @@
         var gezichtContainer = document.querySelector("#gezicht_container");
         var dialoog = document.querySelector("#dialoog");
 
+        gezichtContainer.classList.add("gezicht_nagl");
+        dialoog.innerHTML = "Nagl: <br> 'Wat is dit?! Iemand heeft hier ingebroken. Het Oog van Magnus is gestolen! <br> Dit moet het werk zijn geweest van Ancano. Ik zie nog restanten van zijn vuile magische aura. <br> Dit laat ik niet ongestraft. Al een geluk heb ik een Speurspreuk op mijn artifact. Ik weet exact waar ik moet zijn! <br> Maar als ik daar heelhuids wil geraken ga ik eerst mijn voorraad magische drankjes moeten aanvullen!' "
         /*De Reset Knop */
         var resetKnop = document.querySelector("#reset");
         resetKnop.addEventListener("click", refreshPage)
@@ -60,9 +64,16 @@
         var helpKnop = document.querySelector("#help");
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl")
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Druk op het pijltje om naar het bos te gaan.'");
 
+        }
+        /* De Volgende Pagina Knop */
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+        function gaNaarVolgendeLevel(evt){
+            window.location = "pages/level_1.html"
         }
     </script>
 </body>
