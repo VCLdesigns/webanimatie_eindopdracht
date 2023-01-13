@@ -1,12 +1,24 @@
 /* © Victor Loots, 2022
 /*
+/*Fonts */
+@font-face {
+  font-family: "kingthings_exeterregular";
+  src: url("../fonts/kingthings_exeter-webfont.eot");
+  src: url("../fonts/kingthings_exeter-webfont.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/kingthings_exeter-webfont.woff2") format("woff2"),
+    url("../fonts/kingthings_exeter-webfont.woff") format("woff"),
+    url("../fonts/kingthings_exeter-webfont.ttf") format("truetype"),
+    url("../fonts/kingthings_exeter-webfont.svg#kingthings_exeterregular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
-  /* Variabelen */
+/* Variabelen */
 :root {
-  --font_titel: "domineregular", Georgia, serif;
-  --font_subtitel: "montserratregular", Verdana, sans-serif;
-  --font-brood: "open_sansregular", Verdana, sans-serif;
-  --kleur_wit: #dcc4a9;
+  --font-brood: "kingthings_exeterregular", Verdana, sans-serif;
+  --kleur_wit: rgb(220, 196, 169);
   --kleur_zwart: rgb(6, 8, 15);
 }
 
@@ -19,12 +31,7 @@
   border: none;
 }
 
-img {
-  display: block;
-}
-
-/*
-  /* Standards */
+/* Standards */
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -43,26 +50,42 @@ body {
 .verborgen {
   display: none;
 }
-.relative{
+.relative {
   position: relative;
 }
-.absolute{
+.absolute {
   position: absolute;
 }
-.center_margin{
+.center_margin {
   margin: 0 auto;
 }
-.flex{
+.flex {
   display: flex;
   flex-wrap: wrap;
 }
-.border{
+.border {
   border: var(--kleur_wit) 2px inset;
   outline: var(--kleur_zwart) 2px outset;
 }
-.background_black{
+.background_black {
   background-color: rgba(6, 8, 15, 0.7);
 }
+
+.background_contain{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+#potion:hover,
+.inventaris_plaats:hover,
+.icon:hover,
+.ingredient:hover,
+.object:hover,
+.spell_effect:hover {
+  cursor: pointer;
+}
+
 #container {
   width: 1200px;
   height: 800px;
@@ -90,7 +113,8 @@ body {
   width: 1150px;
   height: 200px;
 }
-#gezicht_container{
+
+#gezicht_container {
   top: calc(50% - 50px);
   left: 25px;
   width: 100px;
@@ -98,15 +122,14 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-
 }
-.gezicht_uil{
+.gezicht_uil {
   background-image: url(../img/gezicht_uil.png);
 }
 
 #dialoog {
   position: absolute;
-  top: 5px;
+  top: calc(50% - 92.5px);
   left: 200px;
   width: 750px;
   height: 185px;
@@ -115,9 +138,8 @@ body {
   padding: 2rem;
 }
 
-
 #menu {
-  top: 25px;
+  top: calc(50% - 80px);
   right: 25px;
   justify-content: center;
   width: 70px;
@@ -138,49 +160,32 @@ a {
   color: var(--kleur_zwart);
 }
 
-a:hover, a:visited{
-  color:var(--kleur_zwart);
+a:hover,
+a:visited {
+  color: var(--kleur_zwart);
 }
-svg{
+svg {
   font-size: 3rem;
   transform: scale(0.9);
 }
-svg:hover{
+svg:hover {
   transform: scale(1);
 }
-
-
 
 .inventaris_plaats {
   width: 50px;
   height: 50px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
 }
 
 #bos_container {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-image: url(../img/forest_background.jpg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
+ 
 }
 
-.ingredient {
-  position: absolute;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.ingredient:hover {
-  cursor: pointer;
-}
 
 #ingredient_1 {
   top: 319px;
@@ -238,40 +243,27 @@ svg:hover{
 }
 
 #alchemy_container {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url(../img/alchemy_lab.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }
 
 #potion {
-  position: absolute;
   top: 315px;
   left: 316px;
   width: 50px;
   height: 50px;
   background-image: url(../img/alchemy_potion.png);
-  background-repeat: no-repeat;
-  background-size: contain;
+  
 }
 
-#potion:hover,
-.inventaris_plaats,
-.icon {
-  cursor: pointer;
-}
 
 #magische_staf,
 #toverboek {
   margin: 3px;
   display: block;
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
+  height: auto;
 }
 
 #magische_staf {
@@ -285,29 +277,21 @@ svg:hover{
 }
 
 #overval_container {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url(../img/overval_plek.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
 }
-#overval_container:hover{
+
+#overval_container:hover {
   cursor: url(../img/magische_staf_cursor.png), auto;
 }
 
 .vijand {
-  position: absolute;
   display: block;
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
   opacity: 0;
 }
-
 
 #falmer {
   background-image: url(../img/falmer.png);
@@ -317,7 +301,6 @@ svg:hover{
   display: block;
   width: 57px;
   height: 71px;
-  position: absolute;
   top: 264px;
   left: 301px;
   animation: falmer_beweging 4s linear infinite;
@@ -345,7 +328,6 @@ svg:hover{
   display: block;
   width: 111px;
   height: 250px;
-  position: absolute;
   top: 268px;
   left: 129px;
   animation: skelet_beweging 5s linear infinite;
@@ -373,7 +355,6 @@ svg:hover{
   display: block;
   width: 52px;
   height: 71px;
-  position: absolute;
   top: 265px;
   left: 555px;
   animation: goblin_beweging 4s linear infinite;
@@ -401,7 +382,6 @@ svg:hover{
   display: block;
   width: 111px;
   height: 250px;
-  position: absolute;
   top: 214px;
   left: 818px;
 
@@ -430,7 +410,6 @@ svg:hover{
   display: block;
   width: 111px;
   height: 250px;
-  position: absolute;
   top: 384px;
   right: -111px;
   animation: zwijn_beweging 8s linear infinite;
@@ -473,24 +452,10 @@ svg:hover{
 }
 
 #pratende_deur_container {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url(../img/pratende_deur.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
 
-.object {
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
-
-.object:hover {
-  cursor: pointer;
 }
 
 .oog {
@@ -552,50 +517,42 @@ svg:hover{
 }
 
 #magnus_container {
-  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url(../img/eye_of_magnus.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
 }
-#blue_circle, #control_spell{
+.magische_cirkel{
+  background-color: var(--kleur_wit);
+}
+#blue_circle,
+#control_spell {
   background-image: url(../img/arcane_circle2.png);
 }
-#green_circle{
+#green_circle {
   background-image: url(../img/arcane_circle3.png);
 }
-#black_circle{
+#black_circle {
   background-image: url(../img/arcane_circle4.png);
-
 }
 #control_spell {
-  position: absolute;
+
   top: 94px;
   left: 317px;
   display: block;
   width: 360px;
-    height: 340px;
+  height: 340px;
   background-image: url(../img/arcane_circle2.png);
-  background-size: contain;
-  background-repeat: no-repeat;
   filter: saturate(500%);
   opacity: 0;
 }
 .spell_effect {
-  position: absolute;
   display: block;
   width: 75px;
   height: 75px;
   background-image: url(../img/arcane_effect2.png);
-  background-size: contain;
-  background-repeat: no-repeat;
   opacity: 0;
 }
-.spell_effect:hover{
-  cursor: pointer;
-}
+ 
 #control_spell div:nth-of-type(1) {
   top: 136px;
   left: 24px;
