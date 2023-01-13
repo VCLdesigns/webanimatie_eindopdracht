@@ -7,20 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/style.css" />
     <title>Level 5</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
     <header></header>
 
     <main>
-        <div id="container">
-            <div id="inventaris_container">
+       <div id="container" class="relative center_margin">
+        <div id="inventaris_container" class="absolute flex border background_black">
                 <div id="blue_circle" class="inventaris_plaats magische_cirkel"></div>
                 <div id="green_circle" class="inventaris_plaats magische_cirkel"></div>
                 <div id="black_circle" class="inventaris_plaats magische_cirkel"></div>
             </div>
 
-            <div id="speelveld_container">
+           <div id="speelveld_container" class="absolute border background_black">
                 <div id="magnus_container">
                     <div id="control_spell">
                         <div class="spell_effect" data-volgorde="3"></div>
@@ -32,16 +34,22 @@
                 </div>
             </div>
 
-            <div id="tekst_container">
-                <div id="dialoog">
-                </div>
-                <div id="menu">
-                    <div id="help" class="icon">?</div>
-                    <a href="level_5.html">
-                        <div id="reset" class="icon">reset</div>
-                    </a>
-                    <a class="" href="level_bonus.html">
-                        <div id="volgende_level" class="icon verborgen">-></div>
+            <div id="tekst_container" class="absolute border background_black">
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                   
+                        <div id="reset" class="icon border">
+                            <i class="fa-solid fa-recycle"></i>
+                        </div>
+                        
+                    <a href="level_bonus.html">
+                        <div id="volgende_level" class="icon border">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -57,8 +65,24 @@
         var magischeEffecten = document.querySelectorAll(".spell_effect");
         var spellEffectVolgorde = 0;
         var magnusContainer = document.querySelector("#magnus_container")
-        var dialoog = document.querySelector("#dialoog");
         var volgendeLevel = document.querySelector("#volgende_level");
+        var gezichtContainer = document.querySelector("#gezicht_container");
+        var dialoog = document.querySelector("#dialoog");
+
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+
+        }
 
         dialoog.innerHTML = "Nee! Wat doe je? Ancona stop! Je vernietigt ons allen als je zo blijft voordoen.<br>Al een geluk weet ik hoe het moet worden uitgeschakeld. <br>Eerst en vooral de juiste cirkel kiezen.<br>Kynareth's bezwering vereist een cirkel met all windrichtingen.";
         for (var i = 0; i < magischeCirkels.length; i++) {

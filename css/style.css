@@ -6,8 +6,8 @@
   --font_titel: "domineregular", Georgia, serif;
   --font_subtitel: "montserratregular", Verdana, sans-serif;
   --font-brood: "open_sansregular", Verdana, sans-serif;
-  --kleur_wit: #f8f7f3;
-  --kleur_zwart: #303030;
+  --kleur_wit: #dcc4a9;
+  --kleur_zwart: rgb(6, 8, 15);
 }
 
 *,
@@ -27,7 +27,6 @@ img {
   /* Standards */
 html {
   font-size: 62.5%;
-  /* (62.5/100) * 16px = 10px */
   scroll-behavior: smooth;
 }
 
@@ -38,49 +37,71 @@ body {
   font-family: var(--font-brood);
   font-size: 2rem;
   line-height: 1.5;
+  background-image: url(../img/background_tile.png);
 }
 
 .verborgen {
   display: none;
 }
-
-#container {
+.relative{
   position: relative;
+}
+.absolute{
+  position: absolute;
+}
+.center_margin{
+  margin: 0 auto;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.border{
+  border: var(--kleur_wit) 2px inset;
+  outline: var(--kleur_zwart) 2px outset;
+}
+.background_black{
+  background-color: rgba(6, 8, 15, 0.7);
+}
+#container {
   width: 1200px;
   height: 800px;
-  margin: 0 auto;
-  background-color: antiquewhite;
 }
 
 #inventaris_container {
-  position: absolute;
   top: 50px;
   right: 25px;
   width: 100px;
   height: 400px;
-  border: black 2px solid;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   place-items: center;
 }
 
 #speelveld_container {
-  position: absolute;
   top: 25px;
   left: 25px;
   width: 1000px;
   height: 550px;
-  background-color: lightgreen;
 }
 
 #tekst_container {
-  position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   left: 25px;
   width: 1150px;
   height: 200px;
-  border: black 2px solid;
+}
+#gezicht_container{
+  top: calc(50% - 50px);
+  left: 25px;
+  width: 100px;
+  height: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+.gezicht_uil{
+  background-image: url(../img/gezicht_uil.png);
 }
 
 #dialoog {
@@ -88,33 +109,44 @@ body {
   top: 5px;
   left: 200px;
   width: 750px;
-  height: 190px;
-  border: black 1px solid;
+  height: 185px;
+  background-color: var(--kleur_wit);
   overflow: auto;
   padding: 2rem;
 }
 
+
 #menu {
-  position: absolute;
   top: 25px;
   right: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  place-items: middle;
-  justify-content: space-evenly;
-  width: 50px;
-  height: 150px;
-  border: black 1px solid;
+  justify-content: center;
+  width: 70px;
+  height: 160px;
+  padding: 0.5rem;
 }
 
 .icon {
   width: 40px;
-  height: 40px;
-  border: 1px black solid;
+  height: 35px;
+  background-color: var(--kleur_wit);
+  text-align: center;
+  padding: 0.25rem;
 }
 
 a {
   text-decoration: none;
+  color: var(--kleur_zwart);
+}
+
+a:hover, a:visited{
+  color:var(--kleur_zwart);
+}
+svg{
+  font-size: 3rem;
+  transform: scale(0.9);
+}
+svg:hover{
+  transform: scale(1);
 }
 
 

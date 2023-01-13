@@ -2,44 +2,69 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>The Stolen Artifact</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-    <header>
-
-
-    </header>
-
     <main>
-        <div id="container">
-            <div id="inventaris_container">
+        <div id="container" class="relative center_margin">
+            <div id="inventaris_container" class="absolute flex border background_black"></div>
 
-            </div>
-        
-            <div id="speelveld_container">
-
+            <div id="speelveld_container" class="absolute border background_black">
+                <div id="intro_container" class="absolute"></div>
             </div>
 
-            <div id="tekst_container">
-
+            <div id="tekst_container" class="absolute border background_black">
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                   
+                        <div id="reset" class="icon border">
+                            <i class="fa-solid fa-recycle"></i>
+                        </div>
+                
+                    <a href="pages/level_1.html">
+                        <div id="volgende_level" class="icon border">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
 
     <footer>
-
+        <h6>Copyright &copy; Victor Loots,2023</h6>
+        <h6>Webanimatie2 @ Encora</h6>
     </footer>
 
     <script>
+        var gezichtContainer = document.querySelector("#gezicht_container");
+        var dialoog = document.querySelector("#dialoog");
 
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+
+        }
     </script>
-
 </body>
 
 </html>

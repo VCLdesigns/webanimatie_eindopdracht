@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Level 1</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -18,9 +20,9 @@
 
     <main>
         <!-- 1200px op 800px max!-->
-        <div id="container">
-            <div id="inventaris_container">
-                Inventaris
+        <div id="container" class="relative center_margin">
+            <div id="inventaris_container" class="absolute flex border background_black">
+
                 <div class="inventaris_plaats"></div>
                 <div class="inventaris_plaats"></div>
                 <div class="inventaris_plaats"></div>
@@ -29,7 +31,7 @@
 
             </div>
 
-            <div id="speelveld_container">
+            <div id="speelveld_container" class="absolute border background_black">
                 <div id="bos_container">
                     <div id="ingredient_1" class="ingredient witte_paddestoel" title=" Witte Paddestoel"></div>
                     <div id="ingredient_2" class="ingredient varen" title="Varen"></div>
@@ -39,23 +41,24 @@
                 </div>
             </div>
 
-            <div id="tekst_container">
-                <div id="dialoog">
-                    <div id="dialoog_content">
-                        <div id="dialoog_top"></div>
-                        <div id="dialoog_bottom"></div>
+            <div id="tekst_container" class="absolute border background_black">
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border">
+                        <i class="fa-solid fa-question"></i>
                     </div>
-                </div>
-                <div id="menu">
-                    <div id="help" class="icon">?</div>
-                    <a href="level_1.html">
-                        <div id="reset" class="icon">&#xf021;</div>
-                    </a>
-                    <a class="" href="level_2.html">
-                        <div id="volgende_level" class="icon verborgen">-></div>
-                    </a>
-                </div>
 
+                    <div id="reset" class="icon border">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+
+                    <a href="level_2.html">
+                        <div id="volgende_level" class="icon border">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -73,8 +76,23 @@
         var deAnemoon = document.querySelector("#ingredient_4");
         var deGrijzeBeker = document.querySelector("#ingredient_5");
         var ingredienten = document.querySelectorAll(".ingredient");
+        var gezichtContainer = document.querySelector("#gezicht_container");
         var dialoog = document.querySelector("#dialoog");
-        var volgendeLevel = document.querySelector("#volgende_level");
+
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+
+        }
 
         dialoog.innerHTML = "Mmm,Heerlijk die frisse boslucht. <br>Nu moet ik op zoek gaan naar alle ingrediënten voor mijn drankje.";
         for (var i = 0; i < ingredienten.length; i++) {
@@ -86,37 +104,37 @@
                 deWittePaddestoel.classList.remove("witte_paddestoel");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
-                dialoog.innerHTML =  "Deze witte paddestoel had ik nodig.<br>Perfect!";
-                
+                dialoog.innerHTML = "Deze witte paddestoel had ik nodig.<br>Perfect!";
+
             } else if (gepluktePlant == "ingredient_2") {
                 deVaren.classList.remove("varen");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
-                dialoog.innerHTML =  "Dit lijkt de juiste Varen te zijn.";
-                
+                dialoog.innerHTML = "Dit lijkt de juiste Varen te zijn.";
+
             } else if (gepluktePlant == "ingredient_3") {
                 deOranjeBeker.classList.remove("oranje_bekerplant");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
-                dialoog.innerHTML =  "Een Oranje Bekerplant.\nSuper!";
-                
+                dialoog.innerHTML = "Een Oranje Bekerplant.\nSuper!";
+
             } else if (gepluktePlant == "ingredient_4") {
                 deAnemoon.classList.remove("anemoon_plant");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
-                dialoog.innerHTML =  "Deze Anemoonplant neem ik alvast mee.";
-                
+                dialoog.innerHTML = "Deze Anemoonplant neem ik alvast mee.";
+
             } else if (gepluktePlant == "ingredient_5") {
                 deGrijzeBeker.classList.remove("grijze_bekerplant");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
-                dialoog.innerHTML =  "Een Grijze bekerplant. \nJippie!";
-                
+                dialoog.innerHTML = "Een Grijze bekerplant. \nJippie!";
+
             }
             if (gevondenPlanten == 5) {
                 dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. \nSnel naar huis en brouwen maar!"
 
-                            volgendeLevel.classList.remove("verborgen");
+                volgendeLevel.classList.remove("verborgen");
 
             }
         }

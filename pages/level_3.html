@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Level 3</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -17,15 +19,13 @@
     </header>
 
     <main>
-        <div id="container">
-            <div id="inventaris_container">
+        <div id="container" class="relative center_margin">
+            <div id="inventaris_container" class="absolute flex border background_black">
                 <div id="magische_staf"></div>
                 <div id="toverboek"></div>
-
-
             </div>
 
-            <div id="speelveld_container">
+            <div id="speelveld_container" class="absolute border background_black">
                 <div id="overval_container">
                     <div id="falmer_container">
                         <div id="falmer" class="vijand"></div>
@@ -43,23 +43,24 @@
                         <div id="zwijn" class="vijand"></div>
                     </div>
                 </div>
-
             </div>
 
-            <div id="tekst_container">
-                <div id="dialoog">
-                    <div id="dialoog_content">
-                        <div id="dialoog_top"></div>
-                        <div id="dialoog_bottom"></div>
+            <div id="tekst_container" class="absolute border background_black">
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border">
+                        <i class="fa-solid fa-question"></i>
                     </div>
-                </div>
-                <div id="menu">
-                    <div id="help" class="icon">?</div>
-                    <a href="level_3.html">
-                        <div id="reset" class="icon">reset</div>
-                    </a>
-                    <a class="" href="level_4.html">
-                        <div id="volgende_level" class="icon verborgen">-></div>
+
+                    <div id="reset" class="icon border">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+
+                    <a href="level_4.html">
+                        <div id="volgende_level" class="icon border">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -73,8 +74,24 @@
     <script>
         var vijanden = document.querySelectorAll(".vijand");
         var verslagen = 0;
-        var dialoog = document.querySelector("#dialoog_content");
         var volgendeLevel = document.querySelector("#volgende_level");
+        var gezichtContainer = document.querySelector("#gezicht_container");
+        var dialoog = document.querySelector("#dialoog");
+
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+
+        }
         dialoog.innerHTML = "Dit ziet eruit als een goede plek om te overnachten.<br>Best even checken of het veilig is.<br>Mijn magische staf houd ik best in de aanslag...Ik voel magie. Volgens mij zijn er onzichtbare vijanden!<br>";
 
         for (var i = 0; i < vijanden.length; i++) {

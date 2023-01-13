@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Level 2</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -18,9 +20,8 @@
 
     <main>
         <!-- 1200px op 800px max!-->
-        <div id="container">
-            <div id="inventaris_container">
-                Inventaris
+        <div id="container" class="relative center_margin">
+            <div id="inventaris_container" class="absolute flex border background_black">
                 <div class="inventaris_plaats witte_paddestoel" data-plant="witte_paddestoel" title=" Witte Paddestoel">
                 </div>
                 <div class="inventaris_plaats varen" data-plant="varen" title="Varen"></div>
@@ -32,29 +33,30 @@
 
             </div>
 
-            <div id="speelveld_container">
+            <div id="speelveld_container" class="absolute border background_black">
                 <div id="alchemy_container">
                     <div id="potion"></div>
                 </div>
             </div>
 
-            <div id="tekst_container">
-                <div id="dialoog">
-                    <div id="dialoog_content">
-                        <div id="dialoog_top"></div>
-                        <div id="dialoog_bottom"></div>
+            <div id="tekst_container" class="absolute border background_black">
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border">
+                        <i class="fa-solid fa-question"></i>
                     </div>
-                </div>
-                <div id="menu">
-                    <div id="help" class="icon">?</div>
-                    <a href="level_2.html">
-                        <div id="reset" class="icon">reset</div>
+                   
+                        <div id="reset" class="icon border">
+                            <i class="fa-solid fa-recycle"></i>
+                        </div>
+                
+                    <a href="level_3.html">
+                        <div id="volgende_level" class="icon border">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
                     </a>
-                    <a class="" href="level_3.html">
-                        <div id="volgende_level" class="icon verborgen">-></div>
-                    </a>
                 </div>
-
             </div>
         </div>
     </main>
@@ -72,8 +74,24 @@
         var tweedeIngredient = false;
         var derdeIngredient = false;
         var vierdeIngredient = false;
-        var dialoog = document.querySelector("#dialoog_content");
         var volgendeLevel = document.querySelector("#volgende_level");
+        var gezichtContainer = document.querySelector("#gezicht_container");
+        var dialoog = document.querySelector("#dialoog");
+
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+
+        }
         dialoog.innerHTML = "Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde:\nVaren, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
         for (var i = 0; i < inventaris.length; i++) {
             inventaris[i].addEventListener("click", kiesIngredient);
