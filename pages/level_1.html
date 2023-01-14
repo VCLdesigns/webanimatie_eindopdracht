@@ -32,7 +32,8 @@
             <div id="bos_container" class="absolute background_contain">
                 <div id="ingredient_1" class="ingredient absolute background_contain witte_paddestoel"
                     title=" Witte Paddestoel"></div>
-                <div id="ingredient_2" class="ingredient absolute background_contain varen" title="Varen"></div>
+                <div id="ingredient_2" class="ingredient absolute background_contain varen" title="Varen">
+                </div>
                 <div id="ingredient_3" class="ingredient absolute background_contain oranje_bekerplant"
                     title="Oranje Bekerplant"></div>
                 <div id="ingredient_4" class="ingredient absolute background_contain anemoon_plant" title="Anemoon">
@@ -63,7 +64,7 @@
     </div>
     </main>
 
-    <footer class = "background_black">
+    <footer class="background_black">
 
     </footer>
 
@@ -107,7 +108,7 @@
         function ingredientGevonden(evt) {
             var gepluktePlant = evt.currentTarget.getAttribute("id");
             if (gepluktePlant == "ingredient_1") {
-                deWittePaddestoel.classList.remove("witte_paddestoel");
+                deWittePaddestoel.classList.add("ingredient_animated");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -115,7 +116,8 @@
                 dialoog.innerHTML = "Deze witte paddestoel had ik nodig.<br>Perfect!";
 
             } else if (gepluktePlant == "ingredient_2") {
-                deVaren.classList.remove("varen");
+
+                deVaren.classList.add("ingredient_animated");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -123,7 +125,7 @@
                 dialoog.innerHTML = "Dit lijkt de juiste Varen te zijn.";
 
             } else if (gepluktePlant == "ingredient_3") {
-                deOranjeBeker.classList.remove("oranje_bekerplant");
+                deOranjeBeker.classList.add("ingredient_animated");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -131,7 +133,7 @@
                 dialoog.innerHTML = "Een Oranje Bekerplant.<br> Super!";
 
             } else if (gepluktePlant == "ingredient_4") {
-                deAnemoon.classList.remove("anemoon_plant");
+                deAnemoon.classList.add("ingredient_animated");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -139,7 +141,7 @@
                 dialoog.innerHTML = "Deze Anemoonplant neem ik alvast mee.";
 
             } else if (gepluktePlant == "ingredient_5") {
-                deGrijzeBeker.classList.remove("grijze_bekerplant");
+                deGrijzeBeker.classList.add("ingredient_animated");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")

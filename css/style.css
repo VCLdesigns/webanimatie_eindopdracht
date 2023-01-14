@@ -4,13 +4,11 @@
 @font-face {
   font-family: "kingthings_exeterregular";
   src: url("../fonts/kingthings_exeter-webfont.eot");
-  src: url("../fonts/kingthings_exeter-webfont.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/kingthings_exeter-webfont.eot?#iefix") format("embedded-opentype"),
     url("../fonts/kingthings_exeter-webfont.woff2") format("woff2"),
     url("../fonts/kingthings_exeter-webfont.woff") format("woff"),
     url("../fonts/kingthings_exeter-webfont.ttf") format("truetype"),
-    url("../fonts/kingthings_exeter-webfont.svg#kingthings_exeterregular")
-      format("svg");
+    url("../fonts/kingthings_exeter-webfont.svg#kingthings_exeterregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -50,28 +48,34 @@ body {
 .verborgen {
   display: none;
 }
+
 .relative {
   position: relative;
 }
+
 .absolute {
   position: absolute;
 }
+
 .center_margin {
   margin: 0 auto;
 }
+
 .flex {
   display: flex;
   flex-wrap: wrap;
 }
+
 .border {
   border: var(--kleur_wit) 2px inset;
   outline: var(--kleur_zwart) 2px outset;
 }
+
 .background_black {
   background-color: rgba(6, 8, 15, 0.7);
 }
 
-.background_contain{
+.background_contain {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -123,13 +127,16 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .gezicht_uil {
   background-image: url(../img/gezicht_uil.png);
 }
-.gezicht_nagl{
+
+.gezicht_nagl {
   background-image: url(../img/gezicht_nagl.png);
 }
-#intro_container{
+
+#intro_container {
   top: 0;
   left: 0;
   width: 100%;
@@ -165,11 +172,11 @@ body {
   padding: 0.25rem;
 }
 
-
 svg {
   font-size: 3rem;
   transform: scale(0.9);
 }
+
 svg:hover {
   transform: scale(1);
 }
@@ -185,9 +192,7 @@ svg:hover {
   width: 100%;
   height: 100%;
   background-image: url(../img/forest_background.jpg);
- 
 }
-
 
 #ingredient_1 {
   top: 319px;
@@ -228,6 +233,10 @@ svg:hover {
   background-image: url(../img/witte_paddestoel.png);
 }
 
+.witte_paddestoel {
+  background-image: url(../img/witte_paddestoel.png);
+}
+
 .varen {
   background-image: url(../img/varen.png);
 }
@@ -244,6 +253,27 @@ svg:hover {
   background-image: url(../img/grijze_bekerplant.png);
 }
 
+.ingredient_animated {
+  animation: toInventory 0.5s linear forwards;
+}
+
+@keyframes toInventory {
+  0% {
+    display: block;
+    transform: translateY(0%)scale(1);
+  }
+
+  99% {
+    display: block;
+    transform: translateY(50%) scale(0.2);
+  }
+
+  100% {
+    display: none;
+    transform: translateY(50%) scale(0);
+  }
+}
+
 #alchemy_container {
   width: 100%;
   height: 100%;
@@ -256,9 +286,7 @@ svg:hover {
   width: 50px;
   height: 50px;
   background-image: url(../img/alchemy_potion.png);
-  
 }
-
 
 #magische_staf,
 #toverboek {
@@ -457,7 +485,6 @@ svg:hover {
   width: 100%;
   height: 100%;
   background-image: url(../img/pratende_deur.jpg);
-
 }
 
 .oog {
@@ -523,21 +550,25 @@ svg:hover {
   height: 100%;
   background-image: url(../img/eye_of_magnus.jpg);
 }
-.magische_cirkel{
+
+.magische_cirkel {
   background-color: var(--kleur_wit);
 }
+
 #blue_circle,
 #control_spell {
   background-image: url(../img/arcane_circle2.png);
 }
+
 #green_circle {
   background-image: url(../img/arcane_circle3.png);
 }
+
 #black_circle {
   background-image: url(../img/arcane_circle4.png);
 }
-#control_spell {
 
+#control_spell {
   top: 94px;
   left: 317px;
   display: block;
@@ -547,6 +578,7 @@ svg:hover {
   filter: saturate(500%);
   opacity: 0;
 }
+
 .spell_effect {
   display: block;
   width: 75px;
@@ -554,29 +586,33 @@ svg:hover {
   background-image: url(../img/arcane_effect2.png);
   opacity: 0;
 }
- 
+
 #control_spell div:nth-of-type(1) {
   top: 136px;
   left: 24px;
 }
+
 #control_spell div:nth-of-type(2) {
   top: 23px;
   left: 140px;
 }
+
 #control_spell div:nth-of-type(3) {
   top: 136px;
   left: 254px;
 }
+
 #control_spell div:nth-of-type(4) {
   top: 247px;
   left: 140px;
 }
+
 #control_spell div:nth-of-type(5) {
   top: 136px;
   left: 136px;
 }
 
-footer{
+footer {
   display: flex;
   justify-content: space-around;
   color: var(--kleur_wit);
