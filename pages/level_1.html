@@ -98,10 +98,21 @@
             } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Druk op het pijltje om naar je lab te gaan.'");
             }
+        }
+        /*De Volgende Level Knop*/
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", nogNietKlaar);
+        function nogNietKlaar(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, waar ga je naartoe? We moeten eerst de ingredienten zoeken.'");
 
         }
+
+        /* De level*/
         gezichtContainer.classList.add("gezicht_nagl");
         dialoog.innerHTML = "Nagl: <br> 'Mmm, Heerlijk die frisse boslucht! <br> Nu moet ik op zoek gaan naar alle ingredienten voor mijn drankje.'";
+
         for (var i = 0; i < ingredienten.length; i++) {
             ingredienten[i].addEventListener("click", ingredientGevonden);
         }
@@ -111,7 +122,7 @@
                 deWittePaddestoel.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
-                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Deze witte paddestoel had ik nodig.<br>Perfect!";
 
@@ -120,7 +131,7 @@
                 deVaren.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
-                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Dit lijkt de juiste Varen te zijn.";
 
@@ -128,7 +139,7 @@
                 deOranjeBeker.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
-                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Een Oranje Bekerplant.<br> Super!";
 
@@ -136,7 +147,7 @@
                 deAnemoon.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
-                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Deze Anemoonplant neem ik alvast mee.";
 
@@ -144,22 +155,19 @@
                 deGrijzeBeker.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
-                gezichtContainer.classList.remove("gezicht_uil")
+                gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Een Grijze bekerplant. <br> Jippie!";
 
             }
             if (gevondenPlanten == 5) {
-                var volgendePagina = document.querySelector("#volgende_level");
+                volgendePagina.removeEventListener("click", nogNietKlaar);
                 volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
                 function gaNaarVolgendeLevel(evt) {
-                    window.location = "level_2.html"
+                    window.location = "level_2.html";
                 }
-                huidigeHelp = 1
-                dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. <br>Snel naar huis en brouwen maar!"
-
-
-
+                huidigeHelp = 1;
+                dialoog.innerHTML = "Dit zijn alle kruiden die ik nodig heb. <br>Snel naar huis en brouwen maar!";
             }
         }
 

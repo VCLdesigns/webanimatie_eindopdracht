@@ -15,34 +15,26 @@
     <main>
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
-                <div id="magische_staf" class="background_contain"></div>
+                <div id="potion" class="background_contain"></div>
                 <div id="toverboek" class="background_contain"></div>
+                <div id="magische_staf" class="background_contain"></div>
+
             </div>
 
             <div id="speelveld_container" class="absolute border background_black">
                 <div id="overval_container" class="absolute background_contain">
-                    <div id="falmer_container" class="absolute">
-                        <div id="falmer" class="vijand absolute background_contain"></div>
-                    </div>
 
-                    <div id="goblin_container" class="absolute">
-                        <div id="goblin" class="vijand absolute background_contain"></div>
-                    </div>
+                    <div id="falmer" class="vijand absolute background_contain"></div>
+                    <div id="goblin" class="vijand absolute background_contain"></div>
                     <div id="ruine_links" class="absolute background_contain"></div>
                     <div id="ruine_midden" class="absolute background_contain"></div>
                     <div id="ruine_rechts" class="absolute background_contain"></div>
-
-                    <div id="skelet_container" class="absolute">
-                        <div id="skelet" class="vijand absolute background_contain"></div>
-                    </div>
-                    <div id="hagraven_container" class="absolute">
-                        <div id="hagraven" class="vijand absolute background_contain"></div>
-                    </div>
-                    <div id="zwijn_container" class="absolute">
-                        <div id="zwijn" class="vijand absolute background_contain"></div>
-                    </div>
+                    <div id="skelet" class="vijand absolute background_contain"></div>
+                    <div id="hagraven" class="vijand absolute background_contain"></div>
                     <div id="steen_links" class="absolute background_contain"></div>
                     <div id="steen_rechts" class="absolute background_contain"></div>
+                    <div id="zwijn" class="vijand absolute background_contain"></div>
+                    <div id="nacht_container" class="absolute"> </div>
 
                 </div>
             </div>
@@ -59,11 +51,10 @@
                         <i class="fa-solid fa-recycle"></i>
                     </div>
 
-                    <a href="level_4.html">
-                        <div id="volgende_level" class="icon border">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </a>
+                    <div id="volgende_level" class="icon border">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -75,6 +66,8 @@
     <script>
         var vijanden = document.querySelectorAll(".vijand");
         var verslagen = 0;
+        var potion = document.querySelector("#potion");
+        var nachtContainer = document.querySelector("#nacht_container");
         var volgendeLevel = document.querySelector("#volgende_level");
         var gezichtContainer = document.querySelector("#gezicht_container");
         var dialoog = document.querySelector("#dialoog");
@@ -85,53 +78,105 @@
         function refreshPage(evt) {
             location.reload();
         }
+
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
+        var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
-
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Nagl, Ben je gek?! Ik help je pas als alle vijanden verslagen zijn!'");
+            } else if (huidigeHelp == 1) {
+                dialoog.innerHTML = ("Skarin: <br> 'Drink je toverdrankje, eet je zwijn en ga slapen. <br> Morgen word nog een hele uitdaging. <br> Slaapzacht Nagl.'");
+            } else if (huidigeHelp == 2) {
+                dialoog.innerHTML = ("Skarin: <br> 'Goeiemorgen Nagl, goed geslapen? <br> Tijd om Ancano te confronteren. <br> Druk op het pijltje om zijn toren te gaan zoeken.'");
+            }
         }
-        dialoog.innerHTML = "Dit ziet eruit als een goede plek om te overnachten.<br>Best even checken of het veilig is.<br>Mijn magische staf houd ik best in de aanslag...Ik voel magie. Volgens mij zijn er onzichtbare vijanden!<br>";
+        /*De Volgende Level Knop*/
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", nogNietKlaar);
+        function nogNietKlaar(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Nagl, ben je gek! We kunnen pas weg als de vijanden zijn verslagen!'");
+            } else if (huidigeHelp == 1) {
+                dialoog.innerHTML = ("Skarin: <br> 'Ik ben best wel moe na dat gevecht. Morgenvroeg zien we wel verder.");
+
+            }
+        }
+
+        /* De level*/
+        gezichtContainer.classList.add("gezicht_nagl");
+        dialoog.innerHTML = "Nagl: <br> 'Dit ziet eruit als een goede plek om te overnachten.<br>Best even checken of het veilig is.<br>Mijn magische staf houd ik best in de aanslag... je weet maar nooit.'";
 
         for (var i = 0; i < vijanden.length; i++) {
-            randomTijd = Math.random() * (8 - 6) + 6;
-            randomVertraging = Math.random() * (5 - 1) + 1;
-            vijanden[i].style.animation = "onzichtbaarheidWeg " + randomTijd + "s linear " + randomVertraging + "s infinite";
+            randomDelay = Math.random() * (8 - 3) + 3;
+            vijanden[i].style.animationDelay = randomDelay + "s";
             vijanden[i].addEventListener("click", vijandVerslagen);
         }
-        console.log(vijanden)
         function vijandVerslagen(evt) {
             vijandGeraakt = evt.currentTarget;
             vijandGeraakt.style.animation = "none";
             vijandGeraakt.removeEventListener("click", vijandVerslagen);
             if (vijandGeraakt.getAttribute("id") == "falmer") {
-                dialoog.innerHTML = "Bliksemschicht!";
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Bliksemschicht!'";
 
             } else if (vijandGeraakt.getAttribute("id") == "skelet") {
-                dialoog.innerHTML = "Heilig Woord!";
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Heilig Woord!'";
 
             } else if (vijandGeraakt.getAttribute("id") == "goblin") {
-                dialoog.innerHTML = "Bloedvloek!";
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Bloedvloek!'";
 
             } else if (vijandGeraakt.getAttribute("id") == "hagraven") {
-                dialoog.innerHTML = "Bevroren Speer!";
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Bevroren Speer!'";
 
             } else if (vijandGeraakt.getAttribute("id") == "zwijn") {
-                dialoog.innerHTML = "Vuurbal!";
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Vuurbal!'";
 
             }
             verslagen++;
             if (verslagen == 5) {
-                volgendeLevel.classList.remove("verborgen");
-                dialoog.innerHTML = "Dat was de laatste! Zo dit ziet er al een pak veiliger uit.<br>En gebraden zwijn als avondeten! Nice.<br>Morgenvroeg zet ik mijn tocht verder. Mijn doel is dichtbij.";
-
+                huidigeHelp = 1;
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Dat was de laatste! <br> Zo dit ziet er al een pak veiliger uit.<br> En gebraden zwijn als avondeten! <br> Nice, ik krijg er al honger van. <br> Morgenvroeg zet ik mijn tocht verder. Mijn doel is dichtbij.'";
                 for (var i = 0; i < vijanden.length; i++) {
                     vijanden[i].removeEventListener("click", vijandVerslagen);
 
 
                 }
+            }
+        }
+        potion.addEventListener("click", nachtRust);
+        function nachtRust(evt) {
+            if (huidigeHelp == 1) {
+                nachtContainer.style.animation = "nachtValt 8s linear"
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'Hmm, door dit drankje ga ik me morgen in topvorm voelen. <br> Nu een welverdiende nachtrust.'";
+                huidigeHelp = 2;
+                volgendePagina.removeEventListener("click", nogNietKlaar);
+                volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                function gaNaarVolgendeLevel(evt) {
+                    window.location = "level_4.html";
+                }
+            } else {
+                gezichtContainer.classList.remove("gezicht_nagl");
+                gezichtContainer.classList.add("gezicht_uil");
+                dialoog.innerHTML = ("Skarin: <br> 'Nagl, ben je gek! Concentreer je op de vijanden!'");
             }
         }
 

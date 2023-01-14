@@ -14,7 +14,10 @@
 <body>
     <main>
         <div id="container" class="relative center_margin">
-            <div id="inventaris_container" class="absolute flex border background_black"> </div>
+            <div id="inventaris_container" class="absolute flex border background_black">
+                <div id="toverboek" class="background_contain"></div>
+                <div id="magische_staf" class="background_contain"></div>
+            </div>
 
             <div id="speelveld_container" class="absolute border background_black">
                 <div id="pratende_deur_container" class="absolute background_contain">
@@ -39,17 +42,17 @@
                         <i class="fa-solid fa-recycle"></i>
                     </div>
 
-                    <a href="level_5.html">
-                        <div id="volgende_level" class="icon border">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                    </a>
+
+                    <div id="volgende_level" class="icon border">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class = "background_black">
+    <footer class="background_black">
         <h6>Copyright &copy; Victor Loots,2023</h6>
         <h6>Webanimatie2 @ Encora</h6>
     </footer>
@@ -69,14 +72,40 @@
         }
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
+        var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.remove("gezicht_deur");
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, is er iets waar ik mee kan helpen?'");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De Deur vroeg je om eerst zijn ogen te geven. ");
+            } else if (huidigeHelp == 1) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Hij mist nog steeds een oog.'");
+            } else if (huidigeHelp == 2) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Hij wil haar.'");
+            } else if (huidigeHelp == 3) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> Wie zou zijn vriendje kunnen zijn?'");
+            } else if (huidigeHelp == 4) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Lukt het niet? <br> De vriendelijke deur wil ons doorlaten. <br> Druk op het pijltje om Ancano een bezoekje te brengen.'");
+            }
+        }
+        /*De Volgende Level Knop*/
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", nogNietKlaar);
+        function nogNietKlaar(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.remove("gezicht_deur");
+            gezichtContainer.classList.add("gezicht_uil");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, De deur wil niet opengaan. We kunnen hem best eerst verder helpen.'");
+            }
 
         }
 
-        dialoog.innerHTML = "Wat wil je? Wil je dat ik open ga?<br>Vergeet het. Eerst een paar opdrachten doen!<br>Eerst wil ik mijn ogen, daarna wil ik mijn kroon en als laatste wil ik een vriendje!";
+        /* De level*/
+        gezichtContainer.classList.add("gezicht_deur");
+        dialoog.innerHTML = "De Deur <br> 'Ah een bezoeker. <br> Mijn meester houd niet van bezoekers. <br>Je hebt geluk dat ik vandaag goed gezind ben.<br> Als je wil dat ik jou help, dan help jij mij eerst.<br>Eerst en vooral wil ik je kunnen zien.'";
 
         for (var i = 0; i < objecten.length; i++) {
             objecten[i].addEventListener("click", opdrachtVanDeDeur);
@@ -85,37 +114,82 @@
             var huidigObject = evt.currentTarget.getAttribute("id");
             var objectNaarDeur = evt.currentTarget;
             if (huidigeOpdracht == 0 || huidigeOpdracht == 1) {
-                if (huidigObject == "linker_oog") {
+                if (huidigObject == "linker_oog" && huidigeOpdracht == 0) {
+                    huidigeHelp++;
                     objectNaarDeur.classList.add("linker_oog_deur");
                     objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
                     huidigeOpdracht++;
-                    dialoog.innerHTML = "Mijn linkeroog. Bedankt.";
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = " De Deur <br> 'Mijn linkeroog. <br> Bedankt.'";
 
-                } else if (huidigObject == "rechter_oog") {
+                } else if (huidigObject == "linker_oog" && huidigeOpdracht == 1) {
+                    huidigeHelp++;
+                    objectNaarDeur.classList.add("linker_oog_deur");
+                    objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
+                    huidigeOpdracht++;
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = "De Deur <br> 'Heerlijk om weer te kunnen zien. <br> Ancano had ze weggooit nadat ik hem verkeerd had aangekeken. <br> Hij heeft toen ook mijn haar weggedaan.<br> Wil je dat even teruggeven?'";
+                } else if (huidigObject == "rechter_oog" && huidigeOpdracht == 0) {
+                    huidigeHelp++;
                     objectNaarDeur.classList.add("rechter_oog_deur");
                     objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
                     huidigeOpdracht++;
-                    dialoog.innerHTML = "Mijn rechteroog. Bedankt.";
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = "De Deur <br> 'Mijn rechteroog. <br> Bedankt.'";
 
+                } else if (huidigObject == "rechter_oog" && huidigeOpdracht == 1) {
+                    huidigeHelp++;
+                    objectNaarDeur.classList.add("rechter_oog_deur");
+                    objectNaarDeur.removeEventListener("click", opdrachtVanDeDeur);
+                    huidigeOpdracht++;
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = "De Deur <br> 'Heerlijk om weer te kunnen zien. <br> Ancano had ze weggooit nadat ik hem verkeerd had aangekeken. <br> Hij heeft toen ook mijn haar weggedaan.<br> Wil je dat even teruggeven?'";
                 } else {
-                    dialoog.innerHTML = "Ik zie nog niets! Eerst mijn ogen.";
+
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.remove("gezicht_deur");
+                    gezichtContainer.classList.add("gezicht_nagl");
+                    dialoog.innerHTML = "Nagl <br> 'Dit lijkt niet op een oog. <br> Best even verder zoeken.'";
                 }
             } else if (huidigeOpdracht == 2) {
                 if (huidigObject == "haar") {
                     huidigeOpdracht++;
+                    huidigeHelp++;
                     objectNaarDeur.classList.add("haar_deur");
-                    dialoog.innerHTML = "Mijn kroon! Dat voelt al wat minder fris aan men hoofd.";
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = "De Deur <br> 'Heerlijk, voel die zachtheid! <br> Bedankt! Dat voelt al wat minder fris aan men hoofd. <br> Als je nu nog zorgt dat mijn vriendje komt, dan laat ik je passeren.'";
 
                 } else {
-                    dialoog.innerHTML = "Waar is mijn kroon?!.";
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.remove("gezicht_deur");
+                    gezichtContainer.classList.add("gezicht_nagl");
+                    dialoog.innerHTML = "Nagl <br> 'Harig, maar geen haar voor de deur. <br> Best even verder zoeken.'";
 
                 }
 
             } else if (huidigeOpdracht == 3) {
                 if (huidigObject == "vriendje") {
-                    volgendeLevel.classList.remove("verborgen");
+                    huidigeHelp++;
                     objectNaarDeur.classList.add("vriendje_deur");
-                    dialoog.innerHTML = "\nHey vriendje, dat is lang geleden.\nOw ben jij hier ook nog? Ok, ga maar verder. Ik zal je niet tegenhouden.";
+                    gezichtContainer.classList.remove("gezicht_nagl");
+                    gezichtContainer.classList.remove("gezicht_uil");
+                    gezichtContainer.classList.add("gezicht_deur");
+                    dialoog.innerHTML = "De Deur <br> 'Bedankt vreemdeling! <br> Findus en ik zijn eindelijk terug samen. <br> Bedankt om me te helpen. <br> Wees voorzichtig want mijn meester zal geen medelijden tonen aan indringers.'";
+                    volgendePagina.removeEventListener("click", nogNietKlaar);
+                    volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                    function gaNaarVolgendeLevel(evt) {
+                        window.location = "level_5.html";
+                    }
 
                 }
 

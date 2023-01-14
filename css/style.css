@@ -137,6 +137,10 @@ body {
   background-image: url(../img/gezicht_nagl.png);
 }
 
+.gezicht_deur {
+  background-image: url(../img/gezicht_deur.png);
+}
+
 #intro_container {
   top: 0;
   left: 0;
@@ -319,7 +323,7 @@ svg:hover {
 }
 
 #magische_staf {
-  height: 75%;
+  height: 50%;
   background-image: url(../img/magische_staf.png);
 }
 
@@ -332,11 +336,49 @@ svg:hover {
   width: 100%;
   height: 100%;
   background-image: url(../img/overval_plek.jpg);
+  overflow: hidden;
+
 }
 
-#overval_container:hover {
-  cursor: url(../img/magische_staf_cursor.png), auto;
+#nacht_container {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0);
 }
+
+@keyframes nachtValt {
+  0% {
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  1% {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  25% {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  75% {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  99% {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
 
 #steen_links {
   width: 225px;
@@ -382,29 +424,72 @@ svg:hover {
   display: block;
   width: 100%;
   height: 100%;
-  opacity: 1;
+}
+
+.vijand:hover {
+  cursor: url(../img/magische_staf_cursor.png), auto;
 }
 
 #falmer {
-  background-image: url(../img/falmer.png);
-}
-
-#falmer_container {
   display: block;
   width: 57px;
   height: 71px;
-  top: 264px;
-  left: 301px;
-  animation: falmer_beweging 4s linear infinite;
+  top: 261px;
+  left: 278px;
+  animation: falmer_beweging 10s linear infinite;
+  background-image: url(../img/falmer.png);
 }
+
 
 @keyframes falmer_beweging {
   0% {
     transform: translateX(0px);
   }
 
+  25% {
+    transform: translateX(0px);
+  }
+
   50% {
-    transform: translateX(300px);
+    transform: translateX(390px);
+  }
+
+  75% {
+    transform: translateX(390px);
+  }
+
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+#goblin {
+  display: block;
+  width: 52px;
+  height: 71px;
+  top: 261px;
+  left: 667px;
+  animation: goblin_beweging 10s linear infinite;
+  background-image: url(../img/goblin.png);
+}
+
+
+@keyframes goblin_beweging {
+  0% {
+    transform: translateX(0px);
+  }
+
+  25% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-410px);
+  }
+
+  75% {
+    transform: translateX(-410px);
   }
 
   100% {
@@ -413,16 +498,13 @@ svg:hover {
 }
 
 #skelet {
-  background-image: url(../img/skelet.png);
-}
-
-#skelet_container {
   display: block;
   width: 111px;
   height: 250px;
-  top: 268px;
-  left: 129px;
-  animation: skelet_beweging 5s linear infinite;
+  top: 218px;
+  left: 70px;
+  animation: skelet_beweging 10s linear infinite;
+  background-image: url(../img/skelet.png);
 }
 
 @keyframes skelet_beweging {
@@ -430,8 +512,16 @@ svg:hover {
     transform: translateX(0px);
   }
 
+  25% {
+    transform: translateX(0px);
+  }
+
   50% {
-    transform: translateX(700px);
+    transform: translateX(800px);
+  }
+
+  75% {
+    transform: translateX(800px);
   }
 
   100% {
@@ -439,54 +529,34 @@ svg:hover {
   }
 }
 
-#goblin {
-  background-image: url(../img/goblin.png);
-}
 
-#goblin_container {
-  display: block;
-  width: 52px;
-  height: 71px;
-  top: 265px;
-  left: 555px;
-  animation: goblin_beweging 4s linear infinite;
-}
-
-@keyframes goblin_beweging {
-  0% {
-    transform: translateX(0px);
-  }
-
-  50% {
-    transform: translateX(-300px);
-  }
-
-  100% {
-    transform: translateX(0px);
-  }
-}
 
 #hagraven {
-  background-image: url(../img/hagraven.png);
-}
-
-#hagraven_container {
   display: block;
   width: 111px;
   height: 250px;
   top: 214px;
-  left: 818px;
-
-  animation: hagraven_beweging 5s linear infinite;
+  left: 870px;
+  animation: hagraven_beweging 10s linear infinite;
+  background-image: url(../img/hagraven.png);
 }
+
 
 @keyframes hagraven_beweging {
   0% {
     transform: translateX(0px);
   }
 
+  25% {
+    transform: translateX(0px);
+  }
+
   50% {
-    transform: translateX(-700px);
+    transform: translateX(-800px);
+  }
+
+  75% {
+    transform: translateX(-800px);
   }
 
   100% {
@@ -495,51 +565,30 @@ svg:hover {
 }
 
 #zwijn {
-  background-image: url(../img/zwijn.png);
-}
-
-#zwijn_container {
   display: block;
   width: 111px;
   height: 250px;
   top: 384px;
-  right: -111px;
-  animation: zwijn_beweging 8s linear infinite;
+  right: -115px;
+  animation: zwijn_beweging 10s linear infinite;
+  background-image: url(../img/zwijn.png);
 }
 
 @keyframes zwijn_beweging {
   0% {
-    right: -111px;
+    right: -115px;
+  }
+
+  25% {
+    right: -115px;
+  }
+
+  75% {
+    right: 100%;
   }
 
   100% {
     right: 100%;
-  }
-}
-
-@keyframes onzichtbaarheidWeg {
-  0% {
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 0;
-  }
-
-  41% {
-    opacity: 1;
-  }
-
-  60% {
-    opacity: 1;
-  }
-
-  61% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
   }
 }
 
@@ -556,25 +605,25 @@ svg:hover {
 }
 
 .linker_oog {
-  top: 442px;
-  left: 112px;
+  top: 454px;
+  left: 103px;
   transform: rotate(-10deg);
 }
 
 .linker_oog_deur {
-  top: 199px;
+  top: 204px;
   left: 447px;
   transform: rotate(50deg);
 }
 
 .rechter_oog {
-  top: 255px;
-  left: 795px;
+  top: 259px;
+  left: 802px;
   transform: rotate(62deg);
 }
 
 .rechter_oog_deur {
-  top: 199px;
+  top: 205px;
   left: 487px;
   transform: rotate(-140deg);
 }

@@ -77,7 +77,7 @@
 
         /*De Reset Knop */
         var resetKnop = document.querySelector("#reset");
-        resetKnop.addEventListener("click", refreshPage)
+        resetKnop.addEventListener("click", refreshPage);
         function refreshPage(evt) {
             location.reload();
         }
@@ -86,7 +86,7 @@
         var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
-            gezichtContainer.classList.remove("gezicht_nagl")
+            gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
             if (huidigeHelp == 0) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
@@ -97,6 +97,17 @@
             }
 
         }
+        /*De Volgende Level Knop*/
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", nogNietKlaar);
+        function nogNietKlaar(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, waar ga je naartoe? We moeten eerst ons drankje maken.'");
+
+        }
+
+        /* De level*/
         gezichtContainer.classList.add("gezicht_nagl");
         dialoog.innerHTML = "Nagl: <br> 'Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde: <br>Varen, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
 
@@ -112,30 +123,40 @@
             if (gekozenIngredient == "varen") {
                 inventaris[1].classList.remove("varen");
                 eersteIngredient = true;
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> 'Eerst de Varen. <br> Even laten sudderen.'";
 
             } else if (gekozenIngredient == "witte_paddestoel" && eersteIngredient == true) {
                 inventaris[0].classList.remove("witte_paddestoel");
                 tweedeIngredient = true;
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> 'Daarna de witte Paddestoel. <br>Zeker goed blijven roeren.'";
 
             } else if (gekozenIngredient == "grijze_bekerplant" && tweedeIngredient == true) {
                 inventaris[4].classList.remove("grijze_bekerplant");
                 derdeIngredient = true;
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> 'Het volgende ingredient is de Grijze Beker. <br> Deze moet ik eerst pletten.'";
             } else if (gekozenIngredient == "oranje_bekerplant" && derdeIngredient == true) {
                 inventaris[2].classList.remove("oranje_bekerplant");
                 vierdeIngredient = true;
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> 'Nu heel voorzichtig de Oranje Beker toevoegen. <br> Best even niet ademen door men neus. Dit gaat stinken!'";
 
             } else if (gekozenIngredient == "anemoon_plant" && vierdeIngredient == true) {
                 inventaris[3].classList.remove("anemoon_plant");
                 huidigeHelp = 2;
-                dialoog.innerHTML = "Nagl: <br> 'En als laatste. De Anemoon. <br>Deze kleur rood is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Schol!'";
-                var volgendePagina = document.querySelector("#volgende_level");
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> 'En als laatste. De Anemoon. <br>Deze textuur is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Schol!'";
+                volgendePagina.removeEventListener("click", nogNietKlaar);
                 volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
                 function gaNaarVolgendeLevel(evt) {
-                    window.location = "level_3.html"
+                    window.location = "level_3.html";
                 }
 
             } else {
@@ -143,7 +164,7 @@
                     inventaris[i].removeEventListener("click", kiesIngredient);
                 }
                 huidigeHelp = 1;
-                gezichtContainer.classList.remove("gezicht_nagl")
+                gezichtContainer.classList.remove("gezicht_nagl");
                 gezichtContainer.classList.add("gezicht_uil");
                 dialoog.innerHTML = "Skarin: <br> 'Yuck wat een geur. Hier ging iets mis. Volgens mij heb je je vergist! <br>Begin maar beter opnieuw. '";
 
