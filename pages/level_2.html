@@ -57,7 +57,7 @@
         </div>
     </main>
 
-    <footer class = "background_black">
+    <footer class="background_black">
         <h6>Copyright &copy; Victor Loots,2023</h6>
         <h6>Webanimatie2 @ Encora</h6>
     </footer>
@@ -90,21 +90,22 @@
             gezichtContainer.classList.add("gezicht_uil");
             if (huidigeHelp == 0) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
-            }else if(huidigeHelp == 1){
+            } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het drankje om het weg te gooien en opnieuw te beginnen.'");
-            }else if(huidigeHelp == 2){
+            } else if (huidigeHelp == 2) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het pijltje om Ancano te gaan zoeken.'");
             }
-            
+
         }
         gezichtContainer.classList.add("gezicht_nagl");
         dialoog.innerHTML = "Nagl: <br> 'Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde: <br>Varen, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
-        for (var i = 0; i < inventaris.length; i++) {
-            inventaris[i].addEventListener("click", kiesIngredient);
-        }
+
         potion.addEventListener("click", beginOpnieuw);
         function beginOpnieuw(evt) {
             location.reload();
+        }
+        for (var i = 0; i < inventaris.length; i++) {
+            inventaris[i].addEventListener("click", kiesIngredient);
         }
         function kiesIngredient(evt) {
             var gekozenIngredient = evt.currentTarget.getAttribute("data-plant");

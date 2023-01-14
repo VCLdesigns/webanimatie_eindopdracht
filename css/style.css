@@ -109,10 +109,11 @@ body {
   left: 25px;
   width: 1000px;
   height: 550px;
+  box-sizing: content-box;
 }
 
 #tekst_container {
-  bottom: 20px;
+  bottom: 14px;
   left: 25px;
   width: 1150px;
   height: 200px;
@@ -195,29 +196,29 @@ svg:hover {
 }
 
 #ingredient_1 {
-  top: 319px;
-  left: 96px;
+  top: 289px;
+  left: 61px;
   width: 100px;
   height: 122px;
 }
 
 #ingredient_2 {
   top: 271px;
-  right: 76px;
+  right: 43px;
   width: 100px;
   height: 100px;
 }
 
 #ingredient_3 {
-  top: 295px;
-  left: 646px;
+  top: 273px;
+  left: 665px;
   width: 73px;
   height: 86px;
 }
 
 #ingredient_4 {
   top: 330px;
-  left: 431px;
+  left: 419px;
   width: 90px;
   height: 100px;
 }
@@ -253,24 +254,24 @@ svg:hover {
   background-image: url(../img/grijze_bekerplant.png);
 }
 
-.ingredient_animated {
+.ingredient_animated_to_inventory {
   animation: toInventory 0.5s linear forwards;
 }
 
 @keyframes toInventory {
   0% {
     display: block;
-    transform: translateY(0%)scale(1);
+    transform: translateX(0%)scale(1);
   }
 
   99% {
     display: block;
-    transform: translateY(50%) scale(0.2);
+    transform: translateX(50%) scale(0.2);
   }
 
   100% {
     display: none;
-    transform: translateY(50%) scale(0);
+    transform: translateX(50%) scale(0);
   }
 }
 
@@ -280,9 +281,30 @@ svg:hover {
   background-image: url(../img/alchemy_lab.jpg);
 }
 
+.ingredient_animated_to_potion {
+  animation: toPotion 0.5s linear forwards;
+}
+
+@keyframes toPotion {
+  0% {
+    display: block;
+    transform: translateY(0%)scale(1);
+  }
+
+  99% {
+    display: block;
+    transform: translateY(-50%) scale(1.5);
+  }
+
+  100% {
+    display: none;
+    transform: translateY(-50%) scale(0);
+  }
+}
+
 #potion {
-  top: 315px;
-  left: 316px;
+  top: 281px;
+  left: 258px;
   width: 50px;
   height: 50px;
   background-image: url(../img/alchemy_potion.png);
@@ -316,11 +338,51 @@ svg:hover {
   cursor: url(../img/magische_staf_cursor.png), auto;
 }
 
+#steen_links {
+  width: 225px;
+  height: 375px;
+  background-image: url(../img/overval_steen_links.png);
+  top: 175px;
+  left: 1px;
+}
+
+#steen_rechts {
+  width: 173px;
+  height: 352px;
+  background-image: url(../img/overval_steen_rechts.png);
+  top: 121px;
+  right: -2px;
+}
+
+#ruine_links {
+  width: 198px;
+  height: 116px;
+  background-image: url(../img/overval_ruine_links.png);
+  top: 242px;
+  left: 212px;
+}
+
+#ruine_midden {
+  width: 106px;
+  height: 164px;
+  background-image: url(../img/overval_ruine_midden.png);
+  top: 212px;
+  left: 429px;
+}
+
+#ruine_rechts {
+  width: 110px;
+  height: 94px;
+  background-image: url(../img/overval_ruine_rechts.png);
+  top: 256px;
+  right: 265px;
+}
+
 .vijand {
   display: block;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  opacity: 1;
 }
 
 #falmer {

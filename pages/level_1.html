@@ -108,7 +108,7 @@
         function ingredientGevonden(evt) {
             var gepluktePlant = evt.currentTarget.getAttribute("id");
             if (gepluktePlant == "ingredient_1") {
-                deWittePaddestoel.classList.add("ingredient_animated");
+                deWittePaddestoel.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[0].classList.add("witte_paddestoel");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -117,7 +117,7 @@
 
             } else if (gepluktePlant == "ingredient_2") {
 
-                deVaren.classList.add("ingredient_animated");
+                deVaren.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[1].classList.add("varen");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -125,7 +125,7 @@
                 dialoog.innerHTML = "Dit lijkt de juiste Varen te zijn.";
 
             } else if (gepluktePlant == "ingredient_3") {
-                deOranjeBeker.classList.add("ingredient_animated");
+                deOranjeBeker.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[2].classList.add("oranje_bekerplant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -133,7 +133,7 @@
                 dialoog.innerHTML = "Een Oranje Bekerplant.<br> Super!";
 
             } else if (gepluktePlant == "ingredient_4") {
-                deAnemoon.classList.add("ingredient_animated");
+                deAnemoon.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[3].classList.add("anemoon_plant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
@@ -141,7 +141,7 @@
                 dialoog.innerHTML = "Deze Anemoonplant neem ik alvast mee.";
 
             } else if (gepluktePlant == "ingredient_5") {
-                deGrijzeBeker.classList.add("ingredient_animated");
+                deGrijzeBeker.classList.add("ingredient_animated_to_inventory");
                 inventarisPlaatsen[4].classList.add("grijze_bekerplant");
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil")
