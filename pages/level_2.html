@@ -18,8 +18,7 @@
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
                 <div class="inventaris_plaats background_contain border witte_paddestoel" data-plant="witte_paddestoel"
-                    title=" Witte Paddestoel">
-                </div>
+                    title=" Witte Paddestoel"></div>
                 <div class="inventaris_plaats background_contain border varen" data-plant="varen" title="Varen"></div>
                 <div class="inventaris_plaats background_contain border oranje_bekerplant"
                     data-plant="oranje_bekerplant" title="Oranje Bekerplant"></div>
@@ -27,12 +26,13 @@
                     title="Anemoon"></div>
                 <div class="inventaris_plaats background_contain border grijze_bekerplant"
                     data-plant="grijze_bekerplant" title="Grijze Bekerplant"></div>
-
+                <div id="inventory_potion" class="potion_image inventaris_plaats background_contain border verborgen">
+                </div>
             </div>
 
             <div id="speelveld_container" class="absolute border background_black">
                 <div id="alchemy_container" class="absolute background_contain">
-                    <div id="potion" class="absolute background_contain"></div>
+                    <div id="potion" class="potion_image absolute background_contain"></div>
                 </div>
             </div>
 
@@ -40,15 +40,15 @@
                 <div id="gezicht_container" class="absolute border"></div>
                 <div id="dialoog" class="absolute border"> </div>
                 <div id="menu" class="absolute flex border">
-                    <div id="help" class="icon border">
-                        <i class="fa-solid fa-question"></i>
+                    <div id="help" class="icon border" title="Geef me een hint">
+                        <i class=" fa-solid fa-question"></i>
                     </div>
 
-                    <div id="reset" class="icon border">
+                    <div id="reset" class="icon border" title="Begin opnieuw">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
 
-                    <div id="volgende_level" class="icon border">
+                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
@@ -64,6 +64,7 @@
 
     <script>
         var potion = document.querySelector("#potion");
+        var potionInventory = document.querySelector("#inventory_potion");
         var inventaris = document.querySelectorAll(".inventaris_plaats");
         //Volgorde van het toevoegen
         // 1) Varen 2) Witte Paddestoel 3) Grijze Beker 4) Oranje Beker 5) Anemoon
@@ -91,8 +92,10 @@
             if (huidigeHelp == 0) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
             } else if (huidigeHelp == 1) {
-                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het drankje om het weg te gooien en opnieuw te beginnen.'");
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op de resetknop om opnieuw te beginnen.'");
             } else if (huidigeHelp == 2) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Je hebt je drankje gemaakt. Vergeet het niet mee te nemen.'");
+            } else if (huidigeHelp == 3) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op het pijltje om Ancano te gaan zoeken.'");
             }
 
@@ -103,7 +106,11 @@
         function nogNietKlaar(evt) {
             gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
-            dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, waar ga je naartoe? We moeten eerst ons drankje maken.'");
+            if (huidigeHelp == 0 || huidigeHelp == 1) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, waar ga je naartoe? We moeten eerst ons drankje maken.'");
+            } else if (huidigeHelp == 2) {
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Vergeet je niets?'");
+            }
 
         }
 
@@ -111,53 +118,45 @@
         gezichtContainer.classList.add("gezicht_nagl");
         dialoog.innerHTML = "Nagl: <br> 'Nu even goed opletten. <br>Als ik het goed heb gelezen dan is de juiste volgorde: <br>Varen, Witte Paddestoel, Grijze Beker, Oranje Beker & Anemoon.";
 
-        potion.addEventListener("click", beginOpnieuw);
-        function beginOpnieuw(evt) {
-            location.reload();
-        }
         for (var i = 0; i < inventaris.length; i++) {
             inventaris[i].addEventListener("click", kiesIngredient);
         }
         function kiesIngredient(evt) {
             var gekozenIngredient = evt.currentTarget.getAttribute("data-plant");
             if (gekozenIngredient == "varen") {
-                inventaris[1].classList.remove("varen");
+                inventaris[1].classList.add("verborgen");
                 eersteIngredient = true;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
-                dialoog.innerHTML = "Nagl: <br> 'Eerst de Varen. <br> Even laten sudderen.'";
+                dialoog.innerHTML = "Nagl: <br> 'Eerst de Varen. <br> Even laten sudderen. <br> Nu het volgende ingredient...'";
 
             } else if (gekozenIngredient == "witte_paddestoel" && eersteIngredient == true) {
-                inventaris[0].classList.remove("witte_paddestoel");
+                inventaris[0].classList.add("verborgen");
                 tweedeIngredient = true;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
-                dialoog.innerHTML = "Nagl: <br> 'Daarna de witte Paddestoel. <br>Zeker goed blijven roeren.'";
+                dialoog.innerHTML = "Nagl: <br> 'De witte Paddestoel. <br> Zeker goed blijven roeren. <br> Welke plant kwam er nu weer achter?.'";
 
             } else if (gekozenIngredient == "grijze_bekerplant" && tweedeIngredient == true) {
-                inventaris[4].classList.remove("grijze_bekerplant");
+                inventaris[4].classList.add("verborgen");
                 derdeIngredient = true;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
-                dialoog.innerHTML = "Nagl: <br> 'Het volgende ingredient is de Grijze Beker. <br> Deze moet ik eerst pletten.'";
+                dialoog.innerHTML = "Nagl: <br> 'Juist ja, de Grijze Beker. <br> Deze moet ik eerst pletten alvorens hem toe te voegen.<br>En daarna komt...'";
             } else if (gekozenIngredient == "oranje_bekerplant" && derdeIngredient == true) {
-                inventaris[2].classList.remove("oranje_bekerplant");
+                inventaris[2].classList.add("verborgen");
                 vierdeIngredient = true;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
-                dialoog.innerHTML = "Nagl: <br> 'Nu heel voorzichtig de Oranje Beker toevoegen. <br> Best even niet ademen door men neus. Dit gaat stinken!'";
+                dialoog.innerHTML = "Nagl: <br> 'De Oranje Beker. <br> Best even niet ademen door men neus, want dit is een stinker!<br>Nu nog het laatste ingredient...'";
 
             } else if (gekozenIngredient == "anemoon_plant" && vierdeIngredient == true) {
-                inventaris[3].classList.remove("anemoon_plant");
+                inventaris[3].classList.add("verborgen");
                 huidigeHelp = 2;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
-                dialoog.innerHTML = "Nagl: <br> 'En als laatste. De Anemoon. <br>Deze textuur is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen! <br> Schol!'";
-                volgendePagina.removeEventListener("click", nogNietKlaar);
-                volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
-                function gaNaarVolgendeLevel(evt) {
-                    window.location = "level_3.html";
-                }
+                dialoog.innerHTML = "Nagl: <br> 'De Anemoon.<br> Even laten doorkoken tot de gewenste textuur is bereikt. <br>En voila, deze textuur is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen!'";
+
 
             } else {
                 for (var i = 0; i < inventaris.length; i++) {
@@ -170,6 +169,26 @@
 
             }
 
+        }
+        potion.addEventListener("click", drankjeCompleet);
+        function drankjeCompleet(evt) {
+            if (huidigeHelp == 2) {
+                huidigeHelp = 3;
+                volgendePagina.removeEventListener("click", nogNietKlaar);
+                volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                function gaNaarVolgendeLevel(evt) {
+                    window.location = "level_3.html";
+                }
+                gezichtContainer.classList.remove("gezicht_uil");
+                gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.innerHTML = "Nagl: <br> Hiermee gaan ze mij nooit kunnen tegenhouden. Begin maar al te huilen Ancano!'";
+                potionInventory.classList.remove("verborgen");
+                potion.classList.add("verborgen");
+            } else {
+                gezichtContainer.classList.remove("gezicht_nagl");
+                gezichtContainer.classList.add("gezicht_uil");
+                dialoog.innerHTML = "Skarin: <br> 'Deze is nog niet klaar hoor. We gaan het eerst moeten afwerken. '"
+            }
         }
     </script>
 

@@ -7,37 +7,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Bonus Level</title>
+    <script src="https://kit.fontawesome.com/4d4614c788.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
 
-    <header>
-
-
-    </header>
-
     <main>
-       <div id="container" class="relative center_margin">
-            <div id="inventaris_container">
+        <div id="container" class="relative center_margin">
+            <div id="inventaris_container" class="absolute flex border background_black">
+                <div id="book_1" class=" book background_contain"></div>
+                <div id="book_2" class=" book background_contain"></div>
+
 
             </div>
-        
-           <div id="speelveld_container" class="absolute border background_black">
 
+            <div id="speelveld_container" class="absolute border background_black">
+                <div id="bonus_container" class="absolute background_contain">
+                    <div id="book_1_open" class="absolute background_contain"></div>
+                    <div id="book_2_open" class="absolute background_contain"></div>
+                </div>
             </div>
-            
+
             <div id="tekst_container" class="absolute border background_black">
-
+                <div id="gezicht_container" class="absolute border"></div>
+                <div id="dialoog" class="absolute border"> </div>
+                <div id="menu" class="absolute flex border">
+                    <div id="help" class="icon border" title="Geef me een hint">
+                        <i class=" fa-solid fa-question"></i>
+                    </div>
+                    <div id="reset" class="icon border" title="Begin opnieuw">
+                        <i class="fa-solid fa-recycle"></i>
+                    </div>
+                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
             </div>
-        </div>
     </main>
 
-    <footer class = "background_black">
-
+    <footer class="background_black">
+        <h6>Copyright &copy; Victor Loots,2023</h6>
+        <h6>Webanimatie2 @ Encora</h6>
     </footer>
 
     <script>
+        var volgendeLevel = document.querySelector("#volgende_level");
+        var gezichtContainer = document.querySelector("#gezicht_container");
+        var dialoog = document.querySelector("#dialoog");
 
+        /*De Reset Knop */
+        var resetKnop = document.querySelector("#reset");
+        resetKnop.addEventListener("click", refreshPage)
+        function refreshPage(evt) {
+            location.reload();
+        }
+        /*De Help Knop*/
+        var helpKnop = document.querySelector("#help");
+        var huidigeHelp = 0;
+        helpKnop.addEventListener("click", hulpVragen);
+        function hulpVragen(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Nope...Ik heb hier niets mee te maken. ");
+            }
+        }
+        /*De Volgende Level Knop*/
+        var volgendePagina = document.querySelector("#volgende_level");
+        volgendePagina.addEventListener("click", nogNietKlaar);
+        function nogNietKlaar(evt) {
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            if (huidigeHelp == 0) {
+                dialoog.innerHTML = ("Skarin: <br> 'Ik wil naar huis!'");
+            }
+
+        }
+
+        /* De level*/
+        gezichtContainer.classList.add("gezicht_nagl");
+        dialoog.innerHTML = "Nagl: <br> 'Wat is dit? <br> Twee boeken ... <br> The Lusty Argonian Maid Deel 1 & 2. <br> Zouden dit verloren schatten zijn?'";
     </script>
 
 </body>

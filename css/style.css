@@ -86,7 +86,8 @@ body {
 .icon:hover,
 .ingredient:hover,
 .object:hover,
-.spell_effect:hover {
+.spell_effect:hover,
+#geheime_level_deur:hover {
   cursor: pointer;
 }
 
@@ -110,6 +111,7 @@ body {
   width: 1000px;
   height: 550px;
   box-sizing: content-box;
+  overflow: hidden;
 }
 
 #tekst_container {
@@ -311,6 +313,9 @@ svg:hover {
   left: 258px;
   width: 50px;
   height: 50px;
+}
+
+.potion_image {
   background-image: url(../img/alchemy_potion.png);
 }
 
@@ -651,8 +656,8 @@ svg:hover {
 }
 
 .vriendje_deur {
-  top: 220px;
-  left: 505px;
+  top: 225px;
+  left: 509px;
   transform: scaleX(1);
 }
 
@@ -672,15 +677,15 @@ svg:hover {
 }
 
 #green_circle {
-  background-image: url(../img/arcane_circle3.png);
-}
-
-#black_circle {
   background-image: url(../img/arcane_circle4.png);
 }
 
+#black_circle {
+  background-image: url(../img/arcane_circle3.png);
+}
+
 #control_spell {
-  top: 94px;
+  top: 85px;
   left: 317px;
   display: block;
   width: 360px;
@@ -696,6 +701,7 @@ svg:hover {
   height: 75px;
   background-image: url(../img/arcane_effect2.png);
   opacity: 0;
+  transition: transform 0.3s linear;
 }
 
 #control_spell div:nth-of-type(1) {
@@ -721,6 +727,82 @@ svg:hover {
 #control_spell div:nth-of-type(5) {
   top: 136px;
   left: 136px;
+}
+
+#geheime_level_deur {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/arcane_effect.png);
+  top: 193px;
+  right: 556px;
+  transform: scale(0);
+  transition: transform 0.2s linear;
+}
+
+
+@keyframes blink {
+  0% {
+    transform: scale(0);
+  }
+
+  25% {
+    transform: scale(0);
+  }
+
+  30% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(0);
+  }
+
+  65% {
+    transform: scale(0);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(0);
+  }
+
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+.book {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-image: url(../img/lusty_argonian_maid_closed.jpg);
+}
+
+#bonus_container {
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/bonus_level.jpg);
+}
+
+#book_1_open,
+#book_2_open {
+  top: calc(50% - 250px);
+  width: 100%;
+  height: 500px;
+  transform: translateX(1100px);
+}
+
+#book_1_open {
+  background-image: url(../img/lusty_argonian_maid_open.jpg);
+}
+
+#book_2_open {
+  background-image: url(../img/lusty_argonian_maid_2_open.jpg);
 }
 
 footer {

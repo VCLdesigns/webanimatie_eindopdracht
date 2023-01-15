@@ -15,8 +15,8 @@
     <main>
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
-                <div id="toverboek" class="background_contain"></div>
-                <div id="magische_staf" class="background_contain"></div>
+                <div id="toverboek" class="background_contain" title="Mijn spreukenboek"></div>
+                <div id="magische_staf" class="background_contain" title="Mijn magische staff"></div>
             </div>
 
             <div id="speelveld_container" class="absolute border background_black">
@@ -34,16 +34,13 @@
                 <div id="gezicht_container" class="absolute border"></div>
                 <div id="dialoog" class="absolute border"> </div>
                 <div id="menu" class="absolute flex border">
-                    <div id="help" class="icon border">
-                        <i class="fa-solid fa-question"></i>
+                    <div id="help" class="icon border" title="Geef me een hint">
+                        <i class=" fa-solid fa-question"></i>
                     </div>
-
-                    <div id="reset" class="icon border">
+                    <div id="reset" class="icon border" title="Begin opnieuw">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
-
-
-                    <div id="volgende_level" class="icon border">
+                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
@@ -184,7 +181,7 @@
                     gezichtContainer.classList.remove("gezicht_nagl");
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_deur");
-                    dialoog.innerHTML = "De Deur <br> 'Bedankt vreemdeling! <br> Findus en ik zijn eindelijk terug samen. <br> Bedankt om me te helpen. <br> Wees voorzichtig want mijn meester zal geen medelijden tonen aan indringers.'";
+                    dialoog.innerHTML = "De Deur <br> 'Bedankt vreemdeling! <br> Findus en ik zijn eindelijk terug samen. <br> Wees voorzichtig als je naar binnen gaat. <br> Mijn meester zal geen medelijden tonen aan indringers.'";
                     volgendePagina.removeEventListener("click", nogNietKlaar);
                     volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
                     function gaNaarVolgendeLevel(evt) {
