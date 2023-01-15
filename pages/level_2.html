@@ -17,7 +17,6 @@
         <h2 class="background_black">Hoofdstuk 3: Magische toverdrankjes</h2>
     </header>
     <main>
-        <!-- 1200px op 800px max!-->
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
                 <div class="inventaris_plaats background_contain border witte_paddestoel" data-plant="witte_paddestoel"
@@ -69,8 +68,6 @@
         var potion = document.querySelector("#potion");
         var potionInventory = document.querySelector("#inventory_potion");
         var inventaris = document.querySelectorAll(".inventaris_plaats");
-        //Volgorde van het toevoegen
-        // 1) Varen 2) Witte Paddestoel 3) Grijze Beker 4) Oranje Beker 5) Anemoon
         var eersteIngredient = false;
         var tweedeIngredient = false;
         var derdeIngredient = false;
@@ -85,6 +82,7 @@
         function refreshPage(evt) {
             location.reload();
         }
+
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
         var huidigeHelp = 0;

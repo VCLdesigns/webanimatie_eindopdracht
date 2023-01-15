@@ -100,6 +100,7 @@ h1 {
   background-size: contain;
 }
 
+/* Interface */
 #potion:hover,
 .inventaris_plaats:hover,
 .icon:hover,
@@ -207,6 +208,8 @@ svg:hover {
   transform: scale(1);
 }
 
+/* Level 1*/
+
 .inventaris_plaats {
   width: 50px;
   height: 50px;
@@ -300,6 +303,8 @@ svg:hover {
   }
 }
 
+/* Level 2 */
+
 #alchemy_container {
   width: 100%;
   height: 100%;
@@ -337,6 +342,8 @@ svg:hover {
 .potion_image {
   background-image: url(../img/alchemy_potion.png);
 }
+
+/* Level 3*/
 
 #magische_staf,
 #toverboek {
@@ -403,7 +410,6 @@ svg:hover {
   }
 }
 
-
 #steen_links {
   width: 225px;
   height: 375px;
@@ -464,7 +470,6 @@ svg:hover {
   background-image: url(../img/falmer.png);
 }
 
-
 @keyframes falmer_beweging {
   0% {
     transform: translateX(0px);
@@ -497,7 +502,6 @@ svg:hover {
   animation: goblin_beweging 10s linear infinite;
   background-image: url(../img/goblin.png);
 }
-
 
 @keyframes goblin_beweging {
   0% {
@@ -553,8 +557,6 @@ svg:hover {
   }
 }
 
-
-
 #hagraven {
   display: block;
   width: 111px;
@@ -564,7 +566,6 @@ svg:hover {
   animation: hagraven_beweging 10s linear infinite;
   background-image: url(../img/hagraven.png);
 }
-
 
 @keyframes hagraven_beweging {
   0% {
@@ -615,6 +616,8 @@ svg:hover {
     right: 100%;
   }
 }
+
+/* Level 4 */
 
 #pratende_deur_container {
   width: 100%;
@@ -679,6 +682,8 @@ svg:hover {
   left: 509px;
   transform: scaleX(1);
 }
+
+/* Level 5 */
 
 #magnus_container {
   width: 100%;
@@ -795,6 +800,8 @@ svg:hover {
   }
 }
 
+/* Bonus Level */
+
 .book {
   display: block;
   width: 100px;
@@ -829,6 +836,8 @@ svg:hover {
 #book_3_open {
   background-image: url(../img/lusty_argonian_pikeman_open.png);
 }
+
+/* Header & Footer */
 
 header {
   text-align: center;
