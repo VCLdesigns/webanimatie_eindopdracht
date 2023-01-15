@@ -815,5 +815,6 @@ footer {
   display: flex;
   justify-content: space-around;
   color: var(--kleur_wit);
-  font-weight: 100;
+  letter-spacing: 0.3rem;
+  padding: 0.5rem;
 }
