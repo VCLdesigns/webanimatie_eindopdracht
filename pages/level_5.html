@@ -12,6 +12,10 @@
 </head>
 
 <body>
+    <header>
+        <h1 class="background_black">Het Oog van Magnus</h1>
+        <h2 class="background_black">Hoofdstuk 6: Bezweringen</h2>
+    </header>
     <main>
         <div id="container" class="relative center_margin">
             <div id="inventaris_container" class="absolute flex border background_black">
@@ -149,36 +153,35 @@
         function richtingAanduiden(evt) {
             if (juisteCirkelGekozen == true) {
                 var gekozenRichting = evt.currentTarget.getAttribute("data-volgorde");
+                console.log(spellEffectVolgorde)
                 if (gekozenRichting == "1" && spellEffectVolgorde == 0) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
                     dialoog.innerHTML = "Nagl: <br> 'Kynareth, Ik roep u op! <br> Eerst in het Noorden, ijs volgt mij!'";
-                    spellEffectVolgorde++;
+                    spellEffectVolgorde = 1;
                     evt.currentTarget.style.opacity = "1";
                 } else if (gekozenRichting == "2" && spellEffectVolgorde == 1) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
                     dialoog.innerHTML = "Nagl: <br> 'Dan in het Zuiden, Vuur verslind mij!'";
-
-                    spellEffectVolgorde++;
+                    spellEffectVolgorde = 2;
                     evt.currentTarget.style.opacity = "1";
                 } else if (gekozenRichting == "3" && spellEffectVolgorde == 2) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
                     dialoog.innerHTML = "Nagl: <br> 'Oostwaarts, waar mijn pad word verlicht!'";
-
-                    spellEffectVolgorde++;
+                    spellEffectVolgorde = 3;
                     evt.currentTarget.style.opacity = "1";
                 } else if (gekozenRichting == "4" && spellEffectVolgorde == 3) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
                     dialoog.innerHTML = "Nagl: <br> 'Westwaarts, waar duisternis heerst!'";
-                    spellEffectVolgorde++;
+                    spellEffectVolgorde = 4;
                     evt.currentTarget.style.opacity = "1";
                 } else if (gekozenRichting == "5" && spellEffectVolgorde == 4) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
-                    dialoog.innerHTML = "Nagl: <br> 'Kom naar mij door het Midden van alles heen! <br> ... <br> ... <br> De rust keert weder en het lijkt erop dat Ancano door het Artifact werd opgezogen toen ik het sloot. <br>Dat zal hem leren!'";
+                    dialoog.innerHTML = "Nagl: <br> 'Kom naar mij door het Midden van alles heen! <br>Oef, Het lijkt erop dat ik het ergste heb kunnen voorkomen. <br> Het lijkt erop dat Ancano energie explosie niet heeft overleeft. <br> Er is geen spoortje van hem te vinden. <br> Opgeruimd staat netjes.'";
                     magnusContainer.style.backgroundImage = "url(../img/eye_of_magnus_defeated.jpg)";
                     for (var i = 0; i < magischeEffecten.length; i++) {
                         magischeEffecten[i].style.transform = "scale(0)";

@@ -13,10 +13,24 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'aetheriusregular';
+  src: url('../fonts/aetherius-webfont.eot');
+  src: url('../fonts/aetherius-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/aetherius-webfont.woff2') format('woff2'),
+    url('../fonts/aetherius-webfont.woff') format('woff'),
+    url('../fonts/aetherius-webfont.ttf') format('truetype'),
+    url('../fonts/aetherius-webfont.svg#aetheriusregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 /* Variabelen */
 :root {
+  --font_titel: 'aetheriusregular', garamond, serif;
   --font-brood: "kingthings_exeterregular", Verdana, sans-serif;
-  --kleur_wit: rgb(220, 196, 169);
+  --kleur_wit: #dcc4a9;
   --kleur_zwart: rgb(6, 8, 15);
 }
 
@@ -43,6 +57,11 @@ body {
   font-size: 2rem;
   line-height: 1.5;
   background-image: url(../img/background_tile.png);
+}
+
+h1 {
+  font-family: var(--font_titel);
+  font-size: 10rem;
 }
 
 .verborgen {
@@ -731,48 +750,48 @@ svg:hover {
 
 #geheime_level_deur {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   background-image: url(../img/arcane_effect.png);
   top: 193px;
   right: 556px;
-  transform: scale(0);
+  transform: scale(0) rotate(0deg);
   transition: transform 0.2s linear;
 }
 
 
 @keyframes blink {
   0% {
-    transform: scale(0);
+    transform: scale(0) rotate(0deg);
   }
 
   25% {
-    transform: scale(0);
+    transform: scale(0) rotate(0deg);
   }
 
   30% {
-    transform: scale(1);
+    transform: scale(1) rotate(360deg);
   }
 
   35% {
-    transform: scale(0);
+    transform: scale(0) rotate(720deg);
   }
 
   65% {
-    transform: scale(0);
+    transform: scale(0) rotate(720deg);
   }
 
   70% {
-    transform: scale(1);
+    transform: scale(1) rotate(360deg);
   }
 
   75% {
-    transform: scale(0);
+    transform: scale(0) rotate(0deg);
   }
 
 
   100% {
-    transform: scale(0);
+    transform: scale(0) rotate(0deg);
   }
 }
 
@@ -809,6 +828,17 @@ svg:hover {
 
 #book_3_open {
   background-image: url(../img/lusty_argonian_pikeman_open.png);
+}
+
+header {
+  text-align: center;
+  color: var(--kleur_wit);
+  letter-spacing: 0.3rem;
+}
+
+header h1,
+header h2 {
+  padding: 0.5rem 0;
 }
 
 footer {
