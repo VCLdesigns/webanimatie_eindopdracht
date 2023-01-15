@@ -18,6 +18,7 @@
             <div id="inventaris_container" class="absolute flex border background_black">
                 <div id="book_1" class=" book background_contain"></div>
                 <div id="book_2" class=" book background_contain"></div>
+                <div id="book_3" class=" book background_contain"></div>
 
 
             </div>
@@ -26,6 +27,8 @@
                 <div id="bonus_container" class="absolute background_contain">
                     <div id="book_1_open" class="absolute background_contain"></div>
                     <div id="book_2_open" class="absolute background_contain"></div>
+                    <div id="book_3_open" class="absolute background_contain"></div>
+
                 </div>
             </div>
 
@@ -52,6 +55,12 @@
     </footer>
 
     <script>
+        var boek1Gesloten = document.querySelector("#book_1")
+        var boek1Open = document.querySelector("#book_1_open");
+        var boek2Gesloten = document.querySelector("#book_2")
+        var boek2Open = document.querySelector("#book_2_open");
+        var boek3Gesloten = document.querySelector("#book_3")
+        var boek3Open = document.querySelector("#book_3_open");
         var volgendeLevel = document.querySelector("#volgende_level");
         var gezichtContainer = document.querySelector("#gezicht_container");
         var dialoog = document.querySelector("#dialoog");
@@ -64,14 +73,12 @@
         }
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
-        var huidigeHelp = 0;
         helpKnop.addEventListener("click", hulpVragen);
         function hulpVragen(evt) {
             gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
-            if (huidigeHelp == 0) {
-                dialoog.innerHTML = ("Skarin: <br> 'Nope...Ik heb hier niets mee te maken. ");
-            }
+            dialoog.innerHTML = ("Skarin: <br> 'Nope...Ik heb hier niets mee te maken. ");
+
         }
         /*De Volgende Level Knop*/
         var volgendePagina = document.querySelector("#volgende_level");
@@ -79,15 +86,59 @@
         function nogNietKlaar(evt) {
             gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
-            if (huidigeHelp == 0) {
-                dialoog.innerHTML = ("Skarin: <br> 'Ik wil naar huis!'");
-            }
+            dialoog.innerHTML = ("Skarin: <br> 'Ik wil naar huis!'");
+
 
         }
 
         /* De level*/
         gezichtContainer.classList.add("gezicht_nagl");
-        dialoog.innerHTML = "Nagl: <br> 'Wat is dit? <br> Twee boeken ... <br> The Lusty Argonian Maid Deel 1 & 2. <br> Zouden dit verloren schatten zijn?'";
+        dialoog.innerHTML = "Nagl: <br> 'Wat is dit? <br> Boeken?! ... <br> Zouden dit verloren schatten van wijsheid zijn?'";
+        boek1Gesloten.addEventListener("click", OpenBoek1);
+        function OpenBoek1(evt) {
+            if (boek2Gesloten.classList.contains("verborgen")) {
+                boek2Gesloten.classList.remove("verborgen");
+                boek2Open.style.transform = "translateX(1100px)"
+            } else if (boek3Gesloten.classList.contains("verborgen")) {
+                boek3Gesloten.classList.remove("verborgen");
+                boek3Open.style.transform = "translateX(1100px)"
+            }
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Nagl! Ik kan men ogen niet geloven. Dat je zo iets leest.'");
+            boek1Gesloten.classList.add("verborgen");
+            boek1Open.style.transform = "translateX(0px)"
+        }
+        boek2Gesloten.addEventListener("click", OpenBoek2);
+        function OpenBoek2(evt) {
+            if (boek1Gesloten.classList.contains("verborgen")) {
+                boek1Gesloten.classList.remove("verborgen");
+                boek1Open.style.transform = "translateX(1100px)"
+            } else if (boek3Gesloten.classList.contains("verborgen")) {
+                boek3Gesloten.classList.remove("verborgen");
+                boek3Open.style.transform = "translateX(1100px)"
+            }
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'En toch maar blijven lezen!'");
+            boek2Gesloten.classList.add("verborgen");
+            boek2Open.style.transform = "translateX(0px)"
+        }
+        boek3Gesloten.addEventListener("click", OpenBoek3);
+        function OpenBoek3(evt) {
+            if (boek1Gesloten.classList.contains("verborgen")) {
+                boek1Gesloten.classList.remove("verborgen");
+                boek1Open.style.transform = "translateX(1100px)"
+            } else if (boek2Gesloten.classList.contains("verborgen")) {
+                boek2Gesloten.classList.remove("verborgen");
+                boek2Open.style.transform = "translateX(1100px)"
+            }
+            gezichtContainer.classList.remove("gezicht_nagl");
+            gezichtContainer.classList.add("gezicht_uil");
+            dialoog.innerHTML = ("Skarin: <br> 'Ik hoop dat je hier je pleziertje hebt uit kunnen halen.'");
+            boek3Gesloten.classList.add("verborgen");
+            boek3Open.style.transform = "translateX(0px)"
+        }
     </script>
 
 </body>

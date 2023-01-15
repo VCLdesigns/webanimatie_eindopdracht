@@ -780,7 +780,7 @@ svg:hover {
   display: block;
   width: 100px;
   height: 100px;
-  background-image: url(../img/lusty_argonian_maid_closed.jpg);
+  background-image: url(../img/book_cover.png);
 }
 
 #bonus_container {
@@ -790,11 +790,13 @@ svg:hover {
 }
 
 #book_1_open,
-#book_2_open {
+#book_2_open,
+#book_3_open {
   top: calc(50% - 250px);
   width: 100%;
   height: 500px;
   transform: translateX(1100px);
+  transition: transform 0.3s linear;
 }
 
 #book_1_open {
@@ -803,6 +805,10 @@ svg:hover {
 
 #book_2_open {
   background-image: url(../img/lusty_argonian_maid_2_open.jpg);
+}
+
+#book_3_open {
+  background-image: url(../img/lusty_argonian_pikeman_open.png);
 }
 
 footer {
