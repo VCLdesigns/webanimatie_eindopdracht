@@ -44,7 +44,7 @@
                     <div id="reset" class="icon border" title="Begin opnieuw">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
-                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                    <div id="volgende_level" class="color_red icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
@@ -191,6 +191,8 @@
                     function gaNaarVolgendeLevel(evt) {
                         window.location = "level_5.html";
                     }
+                    volgendePagina.classList.toggle("color_red");
+                    volgendePagina.classList.add("color_green")
 
                 }
 

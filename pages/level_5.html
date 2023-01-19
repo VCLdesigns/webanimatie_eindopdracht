@@ -35,7 +35,9 @@
                     </div>
 
                     <div id="geheime_level_deur" class="absolute background_contain"></div>
-
+                    <div id="victory_box" class="absolute border verborgen background_black">
+                        <div id="exit_button" class="absolute border"></div>
+                    </div>
                 </div>
             </div>
 
@@ -49,7 +51,7 @@
                     <div id="reset" class="icon border" title="Begin opnieuw">
                         <i class="fa-solid fa-recycle"></i>
                     </div>
-                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                    <div id="volgende_level" class="color_red icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
@@ -108,6 +110,7 @@
             } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Waar ga je heen? <br> Maak de bezwering af voordat het oog ons allemaal tot as maakt.'");
             } else if (huidigeHelp == 2) {
+                //Add Victory Banner
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Gaan we naar huis? of wil je eerst verder verkennen?'");
             } else if (huidigeHelp == 3) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Gaan we dat portaal gewoon zo laten?'");
@@ -187,6 +190,7 @@
                     }
                     controlSpell.style.opacity = "0";
                     huidigeHelp++;
+                    volgendePagina.classList.add("color_green");
                     geheimeLevelDeur.style.animation = "blink 10s linear infinite"
                     geheimeLevelDeur.addEventListener("click", portaalOntdekt);
 
@@ -196,6 +200,7 @@
                     for (var i = 0; i < magischeEffecten.length; i++) {
                         magischeEffecten[i].style.opacity = "0";
                     }
+                    resetKnop.classList.add("color_green");
                     gezichtContainer.classList.remove("gezicht_nagl");
                     gezichtContainer.classList.add("gezicht_uil");
                     dialoog.innerHTML = "Skarin: <br>'Nagl, focus! <br> Dat was verkeerd. Begin opnieuw!'";

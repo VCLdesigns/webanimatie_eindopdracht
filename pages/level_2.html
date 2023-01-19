@@ -50,7 +50,7 @@
                         <i class="fa-solid fa-recycle"></i>
                     </div>
 
-                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                    <div id="volgende_level" class="color_red icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
@@ -166,6 +166,7 @@
                 huidigeHelp = 1;
                 gezichtContainer.classList.remove("gezicht_nagl");
                 gezichtContainer.classList.add("gezicht_uil");
+                resetKnop.classList.add("color_green");
                 dialoog.innerHTML = "Skarin: <br> 'Yuck wat een geur. Hier ging iets mis. Volgens mij heb je je vergist! <br>Begin maar beter opnieuw. '";
 
             }
@@ -180,6 +181,8 @@
                 function gaNaarVolgendeLevel(evt) {
                     window.location = "level_3.html";
                 }
+                volgendePagina.classList.toggle("color_red");
+                volgendePagina.classList.add("color_green")
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> Hiermee gaan ze mij nooit kunnen tegenhouden. Begin maar al te huilen Ancano!'";

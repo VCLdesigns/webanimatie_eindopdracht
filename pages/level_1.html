@@ -45,7 +45,7 @@
 
         <div id="tekst_container" class="absolute border background_black">
             <div id="gezicht_container" class="absolute border"></div>
-            <div id="dialoog" class="absolute border"> </div>
+            <div id="dialoog" class="absolute border talking_border"> </div>
             <div id="menu" class="absolute flex border">
                 <div id="help" class="icon border" title="Geef me een hint">
                     <i class=" fa-solid fa-question"></i>
@@ -55,7 +55,7 @@
                     <i class="fa-solid fa-recycle"></i>
                 </div>
 
-                <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                <div id="volgende_level" class="color_red icon border " title="Ga naar de volgende level">
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
 
@@ -100,6 +100,7 @@
             }
         }
         /*De Volgende Level Knop*/
+
         var volgendePagina = document.querySelector("#volgende_level");
         volgendePagina.addEventListener("click", nogNietKlaar);
         function nogNietKlaar(evt) {
@@ -124,6 +125,8 @@
                 gevondenPlanten++;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
+                dialoog.classList.remove("talking_border");
+                dialoog.classList.add("talking_border");
                 dialoog.innerHTML = "Nagl: <br> 'Een witte paddestoel, zonder rode stippen.'";
 
             } else if (gepluktePlant == "ingredient_2") {
@@ -160,9 +163,12 @@
                 dialoog.innerHTML = "Nagl: <br> 'Een Grijze bekerplant. <br> Yep, die had ik ook nodig.'";
 
             }
+
             if (gevondenPlanten == 5) {
                 volgendePagina.removeEventListener("click", nogNietKlaar);
                 volgendePagina.addEventListener("click", gaNaarVolgendeLevel);
+                volgendePagina.classList.toggle("color_red");
+                volgendePagina.classList.add("color_green")
                 function gaNaarVolgendeLevel(evt) {
                     window.location = "level_2.html";
                 }

@@ -55,7 +55,7 @@
                         <i class="fa-solid fa-recycle"></i>
                     </div>
 
-                    <div id="volgende_level" class="icon border" title="Ga naar de volgende level">
+                    <div id="volgende_level" class="color_red icon border" title="Ga naar de volgende level">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
 
@@ -177,6 +177,8 @@
                 function gaNaarVolgendeLevel(evt) {
                     window.location = "level_4.html";
                 }
+                volgendePagina.classList.toggle("color_red");
+                volgendePagina.classList.add("color_green")
             } else if (huidigeHelp == 2) {
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
