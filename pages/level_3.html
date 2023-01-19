@@ -157,6 +157,7 @@
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
                 dialoog.innerHTML = "Nagl: <br> 'Dat was de laatste! <br> Zo dit ziet er al een pak veiliger uit.<br> En gebraden zwijn als avondeten! <br> Nice, ik krijg er al honger van. <br> Morgenvroeg zet ik mijn tocht verder. Mijn doel is dichtbij.'";
+                potion.style.animation = "potionReady 1s linear infinite"
                 for (var i = 0; i < vijanden.length; i++) {
                     vijanden[i].removeEventListener("click", vijandVerslagen);
 
@@ -167,6 +168,7 @@
         potion.addEventListener("click", nachtRust);
         function nachtRust(evt) {
             if (huidigeHelp == 1) {
+                potion.style.animation = "none"
                 nachtContainer.style.animation = "nachtValt 8s linear"
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");

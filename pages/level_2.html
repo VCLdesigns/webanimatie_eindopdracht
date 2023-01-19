@@ -91,7 +91,7 @@
             gezichtContainer.classList.remove("gezicht_nagl");
             gezichtContainer.classList.add("gezicht_uil");
             if (huidigeHelp == 0) {
-                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Klik op de ingredienten, rechts in je Inventory. <br>De juiste volgorde is: de Varen, de Paddestoel, de Grijze Beker, de Oranje Beker, de Anemoon'");
             } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, lukt het niet? <br> Druk op de resetknop om opnieuw te beginnen.'");
             } else if (huidigeHelp == 2) {
@@ -110,7 +110,7 @@
             if (huidigeHelp == 0 || huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, waar ga je naartoe? We moeten eerst ons drankje maken.'");
             } else if (huidigeHelp == 2) {
-                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Vergeet je niets?'");
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Vergeet je Rode Drankje niet'");
             }
 
         }
@@ -156,6 +156,7 @@
                 huidigeHelp = 2;
                 gezichtContainer.classList.remove("gezicht_uil");
                 gezichtContainer.classList.add("gezicht_nagl");
+                potion.style.animation = "potionReady 1s linear infinite"
                 dialoog.innerHTML = "Nagl: <br> 'De Anemoon.<br> Even laten doorkoken tot de gewenste textuur is bereikt. <br>En voila, deze textuur is perfect. <br> Dit magische drankje zal ervoor zorgen dat ik tegen een serieus stootje zal kunnen!'";
 
 

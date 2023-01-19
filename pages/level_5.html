@@ -35,8 +35,16 @@
                     </div>
 
                     <div id="geheime_level_deur" class="absolute background_contain"></div>
-                    <div id="victory_box" class="absolute border verborgen background_black">
-                        <div id="exit_button" class="absolute border"></div>
+                    <div id="victory_box" class="absolute border background_black">
+                        <h1>Gewonnen!</h1>
+                        <p>Het oog is onder controle. <br> De rust keert weder. <br>
+                            Het hoopje as dat Ancano was smeult nog na. <br>
+                            <br>
+                            - Het Einde -<br>
+                            <br>
+                            Of zag ik daar iets glinsteren?
+                        </p>
+                        <div id="exit_button" class="absolute border">X</div>
                     </div>
                 </div>
             </div>
@@ -75,12 +83,23 @@
         var volgendeLevel = document.querySelector("#volgende_level");
         var gezichtContainer = document.querySelector("#gezicht_container");
         var dialoog = document.querySelector("#dialoog");
+        var victoryBox = document.querySelector("#victory_box");
+        var exitButton = document.querySelector("#exit_button")
 
         /*De Reset Knop */
         var resetKnop = document.querySelector("#reset");
         resetKnop.addEventListener("click", refreshPage)
         function refreshPage(evt) {
             location.reload();
+        }
+        /* De Exit Button */
+
+        exitButton.addEventListener("click", closeVictoryBox);
+        function closeVictoryBox(evt) {
+            victoryBox.style.zIndex = "-1";
+            gezichtContainer.classList.remove("gezicht_uil");
+            gezichtContainer.classList.add("gezicht_nagl");
+            dialoog.innerHTML = "Nagl: <br> 'Glinstering? Waar?'";
         }
         /*De Help Knop*/
         var helpKnop = document.querySelector("#help");
@@ -94,7 +113,7 @@
             } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br>  'Hey Nagl, lukt het niet? <br> We moeten de elementen in de juiste volgorde oproepen. <br> Weet je nog hoe de bezwering ging? <br>Kynareth, Ik roep u op! <br> Eerst in het Noorden, ijs volgt mij! <br >Dan in het Zuiden, vuur verslind mij! <br> Westwaarts, waar duisternis heerst! <br> Oostwaarts, waar mijn pad word verlicht! <br> Kom naar mij door het Midden van alles heen.'");
             } else if (huidigeHelp == 2) {
-                dialoog.innerHTML = ("Skarin: <br>  'Hey Nagl, lukt het niet? <br> Ancano is verslagen en het oog is terug in ons bezit. <br> Gewonnen!'");
+                dialoog.innerHTML = ("Skarin: <br>  'Hey Nagl, lukt het niet? <br> Die glinstering ziet er wel interessant uit. <br> Als je naar huis wil, mag je dit venster gewoon sluiten. <br> Goed Gedaan!'");
             } else if (huidigeHelp == 3) {
                 dialoog.innerHTML = ("Skarin: <br>  'Hey Nagl, lukt het niet? <br> Portalen ... vervelend he? <br> Ik weet er niets over.'");
             }
@@ -110,8 +129,8 @@
             } else if (huidigeHelp == 1) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Waar ga je heen? <br> Maak de bezwering af voordat het oog ons allemaal tot as maakt.'");
             } else if (huidigeHelp == 2) {
-                //Add Victory Banner
-                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Gaan we naar huis? of wil je eerst verder verkennen?'");
+                closeVictoryBox();
+                dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Wil je eerst die glinstering onderzoeken of wil je naar huis? <br> Als je naar huis wil, mag je dit venster gewoon sluiten. <br> Goed gedaan!'");
             } else if (huidigeHelp == 3) {
                 dialoog.innerHTML = ("Skarin: <br> 'Hey Nagl, Gaan we dat portaal gewoon zo laten?'");
             }
@@ -183,14 +202,16 @@
                 } else if (gekozenRichting == "5" && spellEffectVolgorde == 4) {
                     gezichtContainer.classList.remove("gezicht_uil");
                     gezichtContainer.classList.add("gezicht_nagl");
-                    dialoog.innerHTML = "Nagl: <br> 'Kom naar mij door het Midden van alles heen! <br>Oef, Het lijkt erop dat ik het ergste heb kunnen voorkomen. <br> Het lijkt erop dat Ancano energie explosie niet heeft overleeft. <br> Er is geen spoortje van hem te vinden. <br> Opgeruimd staat netjes.'";
+                    dialoog.innerHTML = "Nagl: <br> 'Kom naar mij door het Midden van alles heen!'";
                     magnusContainer.style.backgroundImage = "url(../img/eye_of_magnus_defeated.jpg)";
                     for (var i = 0; i < magischeEffecten.length; i++) {
                         magischeEffecten[i].style.transform = "scale(0)";
                     }
                     controlSpell.style.opacity = "0";
                     huidigeHelp++;
+                    volgendePagina.classList.toggle("color_red");
                     volgendePagina.classList.add("color_green");
+                    victoryBox.style.zIndex = "1";
                     geheimeLevelDeur.style.animation = "blink 10s linear infinite"
                     geheimeLevelDeur.addEventListener("click", portaalOntdekt);
 
@@ -213,7 +234,7 @@
             }
         }
         function portaalOntdekt(evt) {
-            if (portaalGeklikt == 10) {
+            if (portaalGeklikt == 5) {
                 window.location = "level_bonus.html";
             }
             if (portaalGeklikt == 0) {
@@ -239,6 +260,7 @@
                 dialoog.innerHTML = "Nagl: <br> 'Mischien moet ik me harder focussen?'";
             }
         }
+
 
     </script>
 </body>

@@ -155,7 +155,8 @@ h1 {
 .ingredient:hover,
 .object:hover,
 .spell_effect:hover,
-#geheime_level_deur:hover {
+#geheime_level_deur:hover,
+#exit_button {
   cursor: pointer;
 }
 
@@ -385,6 +386,23 @@ svg:hover {
   left: 258px;
   width: 50px;
   height: 50px;
+  transform: scale(0.8);
+  transition: transform 0.1s linear;
+}
+
+@keyframes potionReady {
+
+  0% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
 }
 
 .potion_image {
@@ -819,7 +837,7 @@ svg:hover {
     transform: scale(0) rotate(0deg);
   }
 
-  25% {
+  20% {
     transform: scale(0) rotate(0deg);
   }
 
@@ -827,11 +845,11 @@ svg:hover {
     transform: scale(1) rotate(360deg);
   }
 
-  35% {
+  40% {
     transform: scale(0) rotate(720deg);
   }
 
-  65% {
+  60% {
     transform: scale(0) rotate(720deg);
   }
 
@@ -839,7 +857,7 @@ svg:hover {
     transform: scale(1) rotate(360deg);
   }
 
-  75% {
+  80% {
     transform: scale(0) rotate(0deg);
   }
 
@@ -849,21 +867,25 @@ svg:hover {
   }
 }
 
-/* #victory_box {
+#victory_box {
   display: block;
   width: 500px;
   height: 500px;
   top: calc(50% - 250px);
   left: calc(50% - 250px);
+  z-index: -1;
+  color: var(--kleur_wit);
+  padding: 2rem;
+  text-align: center;
 }
 
 #exit_button {
   display: block;
   width: 20px;
-  height: 20px;
+  height: 30px;
   top: 10px;
   right: 10px;
-} */
+}
 
 /* Bonus Level */
 
